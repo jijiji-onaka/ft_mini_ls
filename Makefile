@@ -6,7 +6,7 @@
 #    By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/02 02:40:46 by tjinichi          #+#    #+#              #
-#    Updated: 2020/12/02 05:32:56 by tjinichi         ###   ########.fr        #
+#    Updated: 2020/12/02 05:42:22 by tjinichi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,11 +26,21 @@ SRCFILE =	main.c \
 			display.c \
 			sort.c \
 
+BONUS_SRCFILE =	main.c \
+			error.c \
+			mini_ls.c \
+			ls_utils.c \
+			display.c \
+			sort.c \
+
 SRCDIR = ./srcs/
+BONUS_DIR = ./bonus/
 
 SRCS = $(addprefix $(SRCDIR), $(SRCFILE))
+BONUS_SRCS = $(addprefix $(BONUS_DIR), $(BONUS_SRCFILE))
 
 OBJS = $(SRCS:.c=.o)
+BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
 all: $(NAME)
 
@@ -50,5 +60,8 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+bonus: $(LIBFT) $(BONUS_OBJS)
+	$(CC) $(CFLAGS) -o $(NAME) $(BONUS_OBJS) $(LIBFT)
 
 .PHONY: all clean fclean re FORCE
