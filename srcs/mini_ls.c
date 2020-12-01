@@ -6,13 +6,13 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 03:18:49 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/02 05:30:46 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/02 05:37:14 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_mini_ls.h"
 
-int		mini_ls_start(void)
+int		mini_ls(void)
 {
 	DIR				*dir;
 	char			**current_dir_file;
