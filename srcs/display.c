@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsort.c                                       :+:      :+:    :+:   */
+/*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/30 23:34:18 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/02 05:23:33 by tjinichi         ###   ########.fr       */
+/*   Created: 2020/12/02 03:59:01 by tjinichi          #+#    #+#             */
+/*   Updated: 2020/12/02 04:01:22 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/ft_mini_ls.h"
 
-void	ft_strsort(char **str, int(*cmp_by)(char *, char *))
+void	display_2d(char **array2d)
 {
-	int		i;
-	int		j;
-	int		str_num;
+	int	i;
 
 	i = 0;
-	str_num = count_2d(str);
-	while (i < str_num - 1)
+	while (array2d[i])
 	{
-		j = i + 1;
-		while (j < str_num)
-		{
-			if ((*cmp_by)(str[i], str[j]) > 0)
-				ft_swap((void**)&(str[i]), (void**)&(str[j]));
-			j++;
-		}
+		write(1, array2d[i], ft_strlen(array2d[i]));
+		write(1, "\n", 1);
 		i++;
 	}
 }

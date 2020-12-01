@@ -1,34 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsort.c                                       :+:      :+:    :+:   */
+/*   ft_stoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/30 23:34:18 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/02 05:23:33 by tjinichi         ###   ########.fr       */
+/*   Created: 2020/09/27 01:25:32 by tjinichi          #+#    #+#             */
+/*   Updated: 2020/10/26 06:01:19 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_strsort(char **str, int(*cmp_by)(char *, char *))
+static int	is_integer(char *s)
 {
-	int		i;
-	int		j;
-	int		str_num;
+	if (*s == '-')
+		s++;
+	while (ft_isdigit(*s))
+		s++;
+	if (*s)
+		return (0);
+	return (1);
+}
 
-	i = 0;
-	str_num = count_2d(str);
-	while (i < str_num - 1)
+int			ft_stoi(char *str, int *i)
+{
+	int res;
+	int	neg;
+
+	if (!is_integer(str))
 	{
-		j = i + 1;
-		while (j < str_num)
-		{
-			if ((*cmp_by)(str[i], str[j]) > 0)
-				ft_swap((void**)&(str[i]), (void**)&(str[j]));
-			j++;
-		}
-		i++;
+		ft_putstr_fd(str, 1);
+		return (0);
 	}
+	res = 0;
+	neg = 1;
+	if (*str == '-' && str++)
+		neg = -1;
+	while (*str && ft_isdigit(*str))
+	{
+		res = res * 10 + (*str - '0');
+		str++;
+	}
+	*i = res * neg;
+	return (1);
 }

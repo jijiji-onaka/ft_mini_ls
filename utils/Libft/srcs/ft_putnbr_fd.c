@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsort.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/30 23:34:18 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/02 05:23:33 by tjinichi         ###   ########.fr       */
+/*   Created: 2020/06/23 13:26:26 by tjinichi          #+#    #+#             */
+/*   Updated: 2020/07/20 00:07:43 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_strsort(char **str, int(*cmp_by)(char *, char *))
+void	ft_putnbr_fd(int n, int fd)
 {
-	int		i;
-	int		j;
-	int		str_num;
-
-	i = 0;
-	str_num = count_2d(str);
-	while (i < str_num - 1)
+	if (n == -2147483648)
 	{
-		j = i + 1;
-		while (j < str_num)
-		{
-			if ((*cmp_by)(str[i], str[j]) > 0)
-				ft_swap((void**)&(str[i]), (void**)&(str[j]));
-			j++;
-		}
-		i++;
+		ft_putstr_fd("-2147483648", fd);
+		return ;
+	}
+	else if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		ft_putnbr_fd(-n, fd);
+	}
+	else if (n > 9)
+	{
+		ft_putnbr_fd(n / 10, fd);
+		ft_putnbr_fd(n % 10, fd);
+	}
+	else
+	{
+		ft_putchar_fd(n + '0', fd);
 	}
 }

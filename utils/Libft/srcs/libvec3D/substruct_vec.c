@@ -1,34 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsort.c                                       :+:      :+:    :+:   */
+/*   substruct_vec.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/30 23:34:18 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/02 05:23:33 by tjinichi         ###   ########.fr       */
+/*   Created: 2020/10/23 14:52:37 by tjinichi          #+#    #+#             */
+/*   Updated: 2020/11/03 00:12:01 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ray.h"
 
-void	ft_strsort(char **str, int(*cmp_by)(char *, char *))
+t_p3	substract_vec(t_p3 minuend, t_p3 subtrahend)
 {
-	int		i;
-	int		j;
-	int		str_num;
+	t_p3	res;
 
-	i = 0;
-	str_num = count_2d(str);
-	while (i < str_num - 1)
-	{
-		j = i + 1;
-		while (j < str_num)
-		{
-			if ((*cmp_by)(str[i], str[j]) > 0)
-				ft_swap((void**)&(str[i]), (void**)&(str[j]));
-			j++;
-		}
-		i++;
-	}
+	res.x = minuend.x - subtrahend.x;
+	res.y = minuend.y - subtrahend.y;
+	res.z = minuend.z - subtrahend.z;
+	return (res);
 }

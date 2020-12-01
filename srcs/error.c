@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsort.c                                       :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/30 23:34:18 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/02 05:23:33 by tjinichi         ###   ########.fr       */
+/*   Created: 2020/12/02 02:55:39 by tjinichi          #+#    #+#             */
+/*   Updated: 2020/12/02 03:54:57 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/ft_mini_ls.h"
 
-void	ft_strsort(char **str, int(*cmp_by)(char *, char *))
+int	put_error_message(char *error_message, size_t len)
 {
-	int		i;
-	int		j;
-	int		str_num;
+	write(2, error_message, len);
+	return (ERROR_RETURN);
+}
 
-	i = 0;
-	str_num = count_2d(str);
-	while (i < str_num - 1)
-	{
-		j = i + 1;
-		while (j < str_num)
-		{
-			if ((*cmp_by)(str[i], str[j]) > 0)
-				ft_swap((void**)&(str[i]), (void**)&(str[j]));
-			j++;
-		}
-		i++;
-	}
+int	perror_message(char *error_message)
+{
+	perror(error_message);
+	return (ERROR_RETURN);
+}
+
+int	perror_message_free(char ***ptr, char *error_message)
+{
+	array_free_2d((void ***)ptr, 0);
+	return (perror_message(error_message));
 }

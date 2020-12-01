@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsort.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/30 23:34:18 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/02 05:23:33 by tjinichi         ###   ########.fr       */
+/*   Created: 2020/06/22 22:06:26 by tjinichi          #+#    #+#             */
+/*   Updated: 2020/11/07 22:17:19 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_strsort(char **str, int(*cmp_by)(char *, char *))
+size_t	ft_strlen(const char *str)
 {
-	int		i;
-	int		j;
-	int		str_num;
+	size_t i;
 
+	if (!str)
+		return (INT_MIN);
 	i = 0;
-	str_num = count_2d(str);
-	while (i < str_num - 1)
+	while (str[i] != '\0')
 	{
-		j = i + 1;
-		while (j < str_num)
-		{
-			if ((*cmp_by)(str[i], str[j]) > 0)
-				ft_swap((void**)&(str[i]), (void**)&(str[j]));
-			j++;
-		}
 		i++;
 	}
+	return (i);
 }

@@ -1,34 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsort.c                                       :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/30 23:34:18 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/02 05:23:33 by tjinichi         ###   ########.fr       */
+/*   Created: 2020/06/23 12:32:53 by tjinichi          #+#    #+#             */
+/*   Updated: 2020/10/23 02:06:49 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_strsort(char **str, int(*cmp_by)(char *, char *))
+char			*ft_itoa(int n)
 {
+	char	*res;
 	int		i;
-	int		j;
-	int		str_num;
 
-	i = 0;
-	str_num = count_2d(str);
-	while (i < str_num - 1)
+	if (n == 0)
+		return (ft_strdup("0"));
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
+	if (!(res = malloc(sizeof(char) * (ft_numlen(n) + 1))))
+		return (NULL);
+	i = ft_numlen(n) - 1;
+	res[i + 1] = '\0';
+	if (n < 0)
 	{
-		j = i + 1;
-		while (j < str_num)
-		{
-			if ((*cmp_by)(str[i], str[j]) > 0)
-				ft_swap((void**)&(str[i]), (void**)&(str[j]));
-			j++;
-		}
-		i++;
+		n *= -1;
+		res[0] = '-';
 	}
+	while (n != 0)
+	{
+		res[i] = n % 10 + '0';
+		n /= 10;
+		i--;
+	}
+	return (res);
 }

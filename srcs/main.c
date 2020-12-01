@@ -1,34 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsort.c                                       :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/30 23:34:18 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/02 05:23:33 by tjinichi         ###   ########.fr       */
+/*   Created: 2020/12/02 02:42:02 by tjinichi          #+#    #+#             */
+/*   Updated: 2020/12/02 03:28:10 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/ft_mini_ls.h"
 
-void	ft_strsort(char **str, int(*cmp_by)(char *, char *))
+int	main(int argc, char *argv[])
 {
-	int		i;
-	int		j;
-	int		str_num;
-
-	i = 0;
-	str_num = count_2d(str);
-	while (i < str_num - 1)
-	{
-		j = i + 1;
-		while (j < str_num)
-		{
-			if ((*cmp_by)(str[i], str[j]) > 0)
-				ft_swap((void**)&(str[i]), (void**)&(str[j]));
-			j++;
-		}
-		i++;
-	}
+	(void)argv;
+	if (argc == 1)
+		return (mini_ls_start());
+	else
+		return (put_error_message(ERR_ARG, 21));
 }

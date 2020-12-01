@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsort.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/30 23:34:18 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/02 05:23:33 by tjinichi         ###   ########.fr       */
+/*   Created: 2020/06/22 23:04:25 by tjinichi          #+#    #+#             */
+/*   Updated: 2020/11/07 22:36:10 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_strsort(char **str, int(*cmp_by)(char *, char *))
+char	*ft_strchr(const char *s, int c)
 {
-	int		i;
-	int		j;
-	int		str_num;
+	char	*s_tmp;
 
-	i = 0;
-	str_num = count_2d(str);
-	while (i < str_num - 1)
+	if (!s)
+		return (NULL);
+	s_tmp = (char *)s;
+	while (*s_tmp)
 	{
-		j = i + 1;
-		while (j < str_num)
-		{
-			if ((*cmp_by)(str[i], str[j]) > 0)
-				ft_swap((void**)&(str[i]), (void**)&(str[j]));
-			j++;
-		}
-		i++;
+		if (*s_tmp == c)
+			return (s_tmp);
+		s_tmp++;
 	}
+	if (*s_tmp == '\0' && c == '\0')
+		return (s_tmp);
+	return (NULL);
 }

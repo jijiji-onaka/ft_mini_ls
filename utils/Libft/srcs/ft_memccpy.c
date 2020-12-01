@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsort.c                                       :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/30 23:34:18 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/02 05:23:33 by tjinichi         ###   ########.fr       */
+/*   Created: 2020/06/22 17:28:34 by tjinichi          #+#    #+#             */
+/*   Updated: 2020/11/07 22:40:33 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_strsort(char **str, int(*cmp_by)(char *, char *))
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	int		i;
-	int		j;
-	int		str_num;
+	unsigned char	*dst_p;
+	unsigned char	*src_p;
 
-	i = 0;
-	str_num = count_2d(str);
-	while (i < str_num - 1)
+	if (!dst || !src)
+		return (NULL);
+	dst_p = (unsigned char*)dst;
+	src_p = (unsigned char*)src;
+	while (n > 0)
 	{
-		j = i + 1;
-		while (j < str_num)
-		{
-			if ((*cmp_by)(str[i], str[j]) > 0)
-				ft_swap((void**)&(str[i]), (void**)&(str[j]));
-			j++;
-		}
-		i++;
+		if ((*dst_p++ = *src_p++) == (unsigned char)c)
+			return (dst_p);
+		n--;
 	}
+	return (NULL);
 }

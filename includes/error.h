@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsort.c                                       :+:      :+:    :+:   */
+/*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/30 23:34:18 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/02 05:23:33 by tjinichi         ###   ########.fr       */
+/*   Created: 2020/12/02 02:47:47 by tjinichi          #+#    #+#             */
+/*   Updated: 2020/12/02 04:21:14 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef ERROR_H
+# define ERROR_H
 
-void	ft_strsort(char **str, int(*cmp_by)(char *, char *))
-{
-	int		i;
-	int		j;
-	int		str_num;
+# include <stdlib.h>
+# define ERROR_RETURN 1
+# define SUCCESS_RETURN 0
+# define ERR_OPENDIR "Fail to opendir :\n"
+# define ERR_MALLOC "Fail to malloc :"
+# define ERR_STAT "Fail to lstat :"
+# define ERR_ARG "usage : ./ft_mini_ls\n"
 
-	i = 0;
-	str_num = count_2d(str);
-	while (i < str_num - 1)
-	{
-		j = i + 1;
-		while (j < str_num)
-		{
-			if ((*cmp_by)(str[i], str[j]) > 0)
-				ft_swap((void**)&(str[i]), (void**)&(str[j]));
-			j++;
-		}
-		i++;
-	}
-}
+int	put_error_message(char *s, size_t len);
+int	perror_message(char *s);
+int	perror_message_free(char ***ptr, char *error_message);
+
+#endif
