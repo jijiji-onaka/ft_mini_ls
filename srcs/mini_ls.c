@@ -6,7 +6,7 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 03:18:49 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/02 05:37:14 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/02 05:38:48 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,6 @@ int		mini_ls(void)
 		return (ERROR_RETURN);
 	ft_strsort(current_dir_file, &sort_by_mtime_from_little);
 	display_2d(current_dir_file);
-	free(current_dir_file);
+	array_free_2d((void ***)&current_dir_file, 0);
 	return (SUCCESS_RETURN);
 }
