@@ -6,7 +6,7 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 17:44:46 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/02 19:01:35 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/02 23:53:16 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ typedef struct	s_op
 	int			small_a;
 }				t_op;
 
+# include <sys/stat.h>
+
 int				count_option(char **arg, t_op *flag);
+
+int				put_total(char **array2d, int f);
+void			put_blocks(blkcnt_t blocks, int f);
 
 #endif

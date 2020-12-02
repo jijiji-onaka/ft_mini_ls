@@ -6,7 +6,7 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 03:18:49 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/02 20:59:07 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/03 00:51:01 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int			mini_ls(void)
 	if (input_dir_file(current_dir_file, ".") == ERROR_RETURN)
 		return (ERROR_RETURN);
 	ft_strsort(current_dir_file, &sort_by_mtime_from_little);
-	display_2d(current_dir_file, 0);
+	default_display_2d(current_dir_file);
 	array_free_2d((void ***)&current_dir_file, alloc_size);
 	return (SUCCESS_RETURN);
 }
@@ -53,9 +53,9 @@ static int	other_option(t_op *flag)
 		return (perror_message(ERR_MALLOC));
 	if (input_dir_file(current_dir_file, ".") == ERROR_RETURN)
 		return (ERROR_RETURN);
-	ft_strsort(current_dir_file, &sort_by_mtime_from_little);
-	rc = display_2d(current_dir_file, flag->large_g);
-	array_free_2d((void ***)&current_dir_file, 0);
+	sort_by_what(current_dir_file, flag);
+	rc = display_2d(current_dir_file, flag);
+	array_free_2d((void ***)&current_dir_file, alloc_size);
 	if (rc == ERROR_RETURN)
 		return (ERROR_RETURN);
 	return (SUCCESS_RETURN);

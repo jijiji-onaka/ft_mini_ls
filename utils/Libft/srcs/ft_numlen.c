@@ -6,7 +6,7 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/23 01:57:21 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/10/23 02:17:44 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/02 23:39:39 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ long long		ft_numlen(long long n)
 	long long		cnt;
 
 	cnt = 0;
-	if (n < 0)
+	if (n <= 0)
 	{
 		n *= -1;
 		cnt++;
@@ -27,5 +27,6 @@ long long		ft_numlen(long long n)
 		cnt++;
 		n /= 10;
 	}
+
 	return (cnt);
 }

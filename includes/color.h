@@ -6,7 +6,7 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 20:08:28 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/02 20:11:26 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/02 22:35:43 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,8 @@
 # define MAGENT	"\033[35m"
 # define CYAAN	"\033[36m"
 # define WHITE	"\033[37m"
+# define B_RESET "\033[49m"
+# define B_YELLOW "\033[43m"
+# define B_CYAAN "\033[46m"
 
 #endif

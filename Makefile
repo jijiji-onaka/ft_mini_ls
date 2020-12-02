@@ -6,18 +6,18 @@
 #    By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/02 02:40:46 by tjinichi          #+#    #+#              #
-#    Updated: 2020/12/02 21:05:51 by tjinichi         ###   ########.fr        #
+#    Updated: 2020/12/03 01:57:45 by tjinichi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 TEST_DIR = ./42_ft_mini_ls_test/
 
-NAME = ft_mini_ls
+NAME = ft_mini
 BONUS_NAME = ft_mini_ls
 
 CC = gcc
 
-CFLAGS = -g -fsanitize=address -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra
 
 LIBS = utils/Libft/
 LIBFT = utils/Libft/libft.a
@@ -36,6 +36,9 @@ BONUS_SRCFILE =	main_bonus.c \
 			display_bonus.c \
 			sort_bonus.c \
 			option_flag_bonus.c \
+			file_check_bonus.c \
+			display_utils_bonus.c \
+			option_small_s_bonus.c \
 
 SRCDIR = ./srcs/
 BONUS_DIR = ./bonus/
@@ -66,7 +69,9 @@ fclean: clean
 
 re: fclean all
 
-bonus: $(LIBFT) $(BONUS_OBJS)
+bonus: $(BONUS_NAME)
+
+$(BONUS_NAME): $(LIBFT) $(BONUS_OBJS)
 	$(CC) $(CFLAGS) -o $(BONUS_NAME) $(BONUS_OBJS) $(LIBFT)
 
 bonus_re: fclean bonus
@@ -74,4 +79,4 @@ bonus_re: fclean bonus
 test: bonus
 	bash $(TEST)
 
-.PHONY: all clean fclean re FORCE test
+.PHONY: all clean fclean re FORCE test bonus

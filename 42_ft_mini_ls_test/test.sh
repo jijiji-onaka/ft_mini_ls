@@ -1,5 +1,6 @@
 mkdir TEST
 # <no_option>
+sleep 2
 ./ft_mini_ls > TEST/ft_no_option.txt
 ls -1tr > TEST/real_no_option.txt
 # <option -G>

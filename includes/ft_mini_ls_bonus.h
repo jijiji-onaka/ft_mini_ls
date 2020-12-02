@@ -6,7 +6,7 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 02:44:28 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/02 20:28:32 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/02 22:34:17 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,7 @@ int				input_dir_file(char **current_dir_file, \
 int				ft_isdir(mode_t st_mode);
 int				ft_issymbolic_link(mode_t st_mode);
 int				ft_isexe_file(mode_t st_mode);
+int				ft_ischaracter_device(mode_t st_mode);
+int				ft_isblock_device(mode_t st_mode);
 
 #endif

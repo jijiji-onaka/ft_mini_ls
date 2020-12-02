@@ -6,7 +6,7 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 17:43:34 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/02 19:40:48 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/03 00:49:09 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,16 @@ static int	option_check(char option, t_op *flag)
 {
 	if (option == 'G')
 		flag->large_g = true;
+	else if (option == 'R')
+		flag->large_r = true;
+	else if (option == 's')
+		flag->small_s = true;
+	else if (option == 'S')
+		flag->large_s = true;
+	else if (option == 'u')
+		flag->small_u = true;
+	else if (option == 'U')
+		flag->large_u = true;
 	else if (option == 'a')
 		flag->small_a = true;
 	else

@@ -6,16 +6,16 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 04:04:52 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/02 18:13:32 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/02 21:15:17 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_mini_ls.h"
 
 /*
-** I should have written return ((s1_time - s2_time));
+** I should have written return (-(s1_time - s2_time));
 ** because it is the smaller one,
-** but in this case I wrote return (-(s1_time - s2_time));
+** but in this case I wrote return ((s1_time - s2_time));
 ** because of the option -r
 */
 
