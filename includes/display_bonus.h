@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display.c                                          :+:      :+:    :+:   */
+/*   display_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/02 03:59:01 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/02 18:13:26 by tjinichi         ###   ########.fr       */
+/*   Created: 2020/12/02 17:45:32 by tjinichi          #+#    #+#             */
+/*   Updated: 2020/12/02 19:50:19 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_mini_ls.h"
+#ifndef DISPLAY_BONUS_H
+# define DISPLAY_BONUS_H
 
-void	display_2d(char **array2d)
-{
-	int	i;
+int			display_2d(char **array2d, int flag_large_g);
 
-	i = 0;
-	while (array2d[i])
-	{
-		write(1, array2d[i], ft_strlen(array2d[i]));
-		write(1, "\n", 1);
-		i++;
-	}
-}
+#endif

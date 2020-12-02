@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display.c                                          :+:      :+:    :+:   */
+/*   color.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/02 03:59:01 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/02 18:13:26 by tjinichi         ###   ########.fr       */
+/*   Created: 2020/12/02 20:08:28 by tjinichi          #+#    #+#             */
+/*   Updated: 2020/12/02 20:11:26 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_mini_ls.h"
+#ifndef COLOR_H
+# define COLOR_H
 
-void	display_2d(char **array2d)
-{
-	int	i;
+# define RESET	"\033[0m"
+# define RED	"\033[31m"
+# define GREEN	"\033[32m"
+# define YELLOW	"\033[33m"
+# define BLUE	"\033[34m"
+# define MAGENT	"\033[35m"
+# define CYAAN	"\033[36m"
+# define WHITE	"\033[37m"
 
-	i = 0;
-	while (array2d[i])
-	{
-		write(1, array2d[i], ft_strlen(array2d[i]));
-		write(1, "\n", 1);
-		i++;
-	}
-}
+#endif

@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display.c                                          :+:      :+:    :+:   */
+/*   error_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/02 03:59:01 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/02 18:13:26 by tjinichi         ###   ########.fr       */
+/*   Created: 2020/12/02 02:55:39 by tjinichi          #+#    #+#             */
+/*   Updated: 2020/12/02 17:15:06 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_mini_ls.h"
+#include "../includes/ft_mini_ls_bonus.h"
 
-void	display_2d(char **array2d)
+int	put_error_message(char *error_message, size_t len)
 {
-	int	i;
+	write(2, error_message, len);
+	return (ERROR_RETURN);
+}
 
-	i = 0;
-	while (array2d[i])
-	{
-		write(1, array2d[i], ft_strlen(array2d[i]));
-		write(1, "\n", 1);
-		i++;
-	}
+int	perror_message(char *error_message)
+{
+	perror(error_message);
+	return (ERROR_RETURN);
+}
+
+int	perror_message_free(char ***ptr, char *error_message)
+{
+	array_free_2d((void ***)ptr, 0);
+	return (perror_message(error_message));
 }

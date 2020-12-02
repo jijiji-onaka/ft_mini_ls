@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display.c                                          :+:      :+:    :+:   */
+/*   sort_bonus.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/02 03:59:01 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/02 18:13:26 by tjinichi         ###   ########.fr       */
+/*   Created: 2020/12/02 17:46:33 by tjinichi          #+#    #+#             */
+/*   Updated: 2020/12/02 17:46:35 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_mini_ls.h"
+#ifndef SORT_BONUS_H
+# define SORT_BONUS_H
 
-void	display_2d(char **array2d)
-{
-	int	i;
+int		sort_by_mtime_from_little(char *s1, char *s2);
 
-	i = 0;
-	while (array2d[i])
-	{
-		write(1, array2d[i], ft_strlen(array2d[i]));
-		write(1, "\n", 1);
-		i++;
-	}
-}
+#endif

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.c                                             :+:      :+:    :+:   */
+/*   sort_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 04:04:52 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/02 18:13:32 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/02 18:13:52 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_mini_ls.h"
+#include "../includes/ft_mini_ls_bonus.h"
 
 /*
 ** I should have written return ((s1_time - s2_time));

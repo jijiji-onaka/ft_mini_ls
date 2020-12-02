@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display.c                                          :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/02 03:59:01 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/02 18:13:26 by tjinichi         ###   ########.fr       */
+/*   Created: 2020/12/02 02:42:02 by tjinichi          #+#    #+#             */
+/*   Updated: 2020/12/02 17:18:37 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_mini_ls.h"
+#include "../includes/ft_mini_ls_bonus.h"
 
-void	display_2d(char **array2d)
+int	main(int argc, char *argv[])
 {
-	int	i;
-
-	i = 0;
-	while (array2d[i])
-	{
-		write(1, array2d[i], ft_strlen(array2d[i]));
-		write(1, "\n", 1);
-		i++;
-	}
+	(void)argv;
+	if (argc == 1)
+		return (mini_ls());
+	else
+		return (mini_ls_option(argv));
 }

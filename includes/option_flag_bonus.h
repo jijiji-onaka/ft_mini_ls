@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display.c                                          :+:      :+:    :+:   */
+/*   option_flag_bonus.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/02 03:59:01 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/02 18:13:26 by tjinichi         ###   ########.fr       */
+/*   Created: 2020/12/02 17:44:46 by tjinichi          #+#    #+#             */
+/*   Updated: 2020/12/02 19:01:35 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_mini_ls.h"
+#ifndef OPTION_FlAG_BONUS_H
+# define OPTION_FlAG_BONUS_H
 
-void	display_2d(char **array2d)
+typedef struct	s_op
 {
-	int	i;
+	int			large_g;
+	int			large_r;
+	int			small_s;
+	int			large_s;
+	int			small_u;
+	int			large_u;
+	int			small_a;
+}				t_op;
 
-	i = 0;
-	while (array2d[i])
-	{
-		write(1, array2d[i], ft_strlen(array2d[i]));
-		write(1, "\n", 1);
-		i++;
-	}
-}
+int				count_option(char **arg, t_op *flag);
+
+#endif

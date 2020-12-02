@@ -6,15 +6,18 @@
 #    By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/02 02:40:46 by tjinichi          #+#    #+#              #
-#    Updated: 2020/12/02 05:42:22 by tjinichi         ###   ########.fr        #
+#    Updated: 2020/12/02 21:05:51 by tjinichi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+TEST_DIR = ./42_ft_mini_ls_test/
+
 NAME = ft_mini_ls
+BONUS_NAME = ft_mini_ls
 
 CC = gcc
 
-CFLAGS = -g -Wall -Werror -Wextra
+CFLAGS = -g -fsanitize=address -Wall -Werror -Wextra
 
 LIBS = utils/Libft/
 LIBFT = utils/Libft/libft.a
@@ -26,12 +29,13 @@ SRCFILE =	main.c \
 			display.c \
 			sort.c \
 
-BONUS_SRCFILE =	main.c \
-			error.c \
-			mini_ls.c \
-			ls_utils.c \
-			display.c \
-			sort.c \
+BONUS_SRCFILE =	main_bonus.c \
+			error_bonus.c \
+			mini_ls_bonus.c \
+			ls_utils_bonus.c \
+			display_bonus.c \
+			sort_bonus.c \
+			option_flag_bonus.c \
 
 SRCDIR = ./srcs/
 BONUS_DIR = ./bonus/
@@ -42,18 +46,19 @@ BONUS_SRCS = $(addprefix $(BONUS_DIR), $(BONUS_SRCFILE))
 OBJS = $(SRCS:.c=.o)
 BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
+TEST = $(addprefix $(TEST_DIR), test.sh)
+
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJS)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT)
-
 
 $(LIBFT):FORCE
 	@make -C $(LIBS)
 
 clean:
 	@make clean -C $(LIBS)
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(BONUS_OBJS)
 
 fclean: clean
 	@make fclean -C $(LIBS)
@@ -62,6 +67,11 @@ fclean: clean
 re: fclean all
 
 bonus: $(LIBFT) $(BONUS_OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(BONUS_OBJS) $(LIBFT)
+	$(CC) $(CFLAGS) -o $(BONUS_NAME) $(BONUS_OBJS) $(LIBFT)
 
-.PHONY: all clean fclean re FORCE
+bonus_re: fclean bonus
+
+test: bonus
+	bash $(TEST)
+
+.PHONY: all clean fclean re FORCE test

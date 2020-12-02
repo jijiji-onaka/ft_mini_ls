@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ls_utils.c                                         :+:      :+:    :+:   */
+/*   ls_utils_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 03:34:11 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/02 21:06:56 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/02 21:01:53 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_mini_ls.h"
+#include "../includes/ft_mini_ls_bonus.h"
 
 int		dir_in_file_num(DIR *dir, int *hidden_file_num)
 {
@@ -45,4 +45,21 @@ int		input_dir_file(char **current_dir_file, \
 	current_dir_file[i] = NULL;
 	closedir(dir);
 	return (0);
+}
+
+int		ft_isdir(mode_t st_mode)
+{
+	return (S_ISDIR(st_mode));
+}
+
+int		ft_issymbolic_link(mode_t st_mode)
+{
+	return (S_ISLNK(st_mode));
+}
+
+int		ft_isexe_file(mode_t st_mode)
+{
+	if (ft_issymbolic_link(st_mode) == 1)
+		return (ERROR_RETURN);
+	return ((st_mode & S_IXUSR) | (st_mode & S_IXGRP) | (st_mode & S_IXOTH));
 }
