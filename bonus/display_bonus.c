@@ -6,7 +6,7 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 03:59:01 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/03 03:43:31 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/03 04:11:10 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ int			display_2d(char **array2d, t_op *flag)
 			print_file_dir(array2d[i]);
 		i++;
 	}
-	if (flag->large_r)
-		puts("++++++++++++++");
 	return (SUCCESS_RETURN);
 }
 

@@ -6,7 +6,7 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 02:44:28 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/02 22:34:17 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/03 04:32:32 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ int				mini_ls(void);
 int				mini_ls_option(char **arg);
 int				dir_in_file_num(DIR *dir, int *hidden_file_num);
 int				input_dir_file(char **current_dir_file, \
-					char *directory);
-int				ft_isdir(mode_t st_mode);
-int				ft_issymbolic_link(mode_t st_mode);
-int				ft_isexe_file(mode_t st_mode);
-int				ft_ischaracter_device(mode_t st_mode);
-int				ft_isblock_device(mode_t st_mode);
+					char *directory, int flag_small_a);
+int				is_dir(mode_t st_mode);
+int				is_symbolic_link(mode_t st_mode);
+int				is_exe_file(mode_t st_mode);
+int				is_character_device(mode_t st_mode);
+int				is_block_device(mode_t st_mode);
 
 #endif

@@ -1,13 +1,19 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
+
+int	f(int i)
+{
+	if (i == 2)
+		return 0;
+	char *s = strdup("1");
+	f(i + 1);
+	free(s);
+	return 0;
+}
 
 int main(int ac, char **av)
 {
-	printf("\x1b[35m%zu\n", strlen("\x1b[34m"));
-	printf("\x1b[35m%zu\n", strlen("\033[0m"));
-	printf("\x1b[35m%zu\n", strlen("\033[34m"));
-	char *s = strdup("a");
-	s = strdup("a");
-	while (1)
-		;
+	f(0);
+	while (1);
 }

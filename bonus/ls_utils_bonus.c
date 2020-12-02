@@ -6,7 +6,7 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 03:34:11 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/03 03:18:39 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/03 04:14:48 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		dir_in_file_num(DIR *dir, int *hidden_file_num)
 }
 
 int		input_dir_file(char **current_dir_file, \
-			char *directory)
+			char *directory, int flag_small_a)
 {
 	DIR				*dir;
 	struct dirent	*dp;
@@ -38,8 +38,9 @@ int		input_dir_file(char **current_dir_file, \
 	i = 0;
 	while ((dp = readdir(dir)) != NULL)
 	{
-		if (ft_memcmp(dp->d_name, ".", 1) == 0)
-			continue ;
+		if (flag_small_a != true)
+			if (ft_memcmp(dp->d_name, ".", 1) == 0)
+				continue ;
 		current_dir_file[i] = ft_strdup(dp->d_name);
 		i++;
 	}

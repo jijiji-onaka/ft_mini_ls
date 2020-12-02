@@ -6,7 +6,7 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 04:04:52 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/03 03:24:55 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/03 06:36:02 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,26 +93,19 @@ int		sort_by_atime_from_little(char *s1, char *s2)
 
 int		sort_by_filesize_from_little(char *s1, char *s2)
 {
-	struct stat	stat_buf;
+	struct stat	stat_buf1;
+	struct stat	stat_buf2;
 	off_t		s1_size;
 	off_t		s2_size;
 
-	if (lstat(s1, &stat_buf) != 0)
+	if (lstat(s1, &stat_buf1) != 0)
 		return (INT_MIN);
-	s1_size = stat_buf.st_size;
-	if (lstat(s2, &stat_buf) != 0)
+	s1_size = stat_buf1.st_size;
+	if (lstat(s2, &stat_buf2) != 0)
 		return (INT_MIN);
-	s2_size = stat_buf.st_size;
+	s2_size = stat_buf2.st_size;
 	if (s1_size - s2_size == 0)
-	{
-		if (lstat(s1, &stat_buf) != 0)
-			return (INT_MIN);
-		s1_size = stat_buf.st_birthtimespec.tv_nsec;
-		if (lstat(s2, &stat_buf) != 0)
-			return (INT_MIN);
-		s2_size = stat_buf.st_birthtimespec.tv_nsec;
-		return (-(s1_size - s2_size));
-	}
+		return (-ft_strcmp(s1, s2));
 	return ((s1_size - s2_size));
 }
 
