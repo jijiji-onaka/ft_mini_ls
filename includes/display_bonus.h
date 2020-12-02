@@ -6,7 +6,7 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 17:45:32 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/02 23:17:21 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/03 03:30:19 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 int			display_2d(char **array2d, t_op *flag);
 void		default_display_2d(char **array2d);
-int			print_file_dir(char *file);
+void		print_file_dir(char *file);
 int			color_print(char *file, struct stat stat_buf);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 03:18:49 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/03 02:19:59 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/03 03:42:09 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,10 @@ int			mini_ls_option(char **arg)
 	flag = (t_op){0};
 	if (count_option(arg, &flag) == ERROR_RETURN)
 		return (put_error_message(ERR_ARG, 21));
-	if (flag.large_r == true)
-		;
-	// large_r_option();
-	else
+	// if (flag.large_r == true)
+	// 	;
+	// // large_r_option();
+	// else
 		return (other_option(&flag));
 	return (1);
 }

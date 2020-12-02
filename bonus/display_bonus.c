@@ -6,7 +6,7 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 03:59:01 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/03 02:32:43 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/03 03:43:31 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,24 +20,21 @@ int			display_2d(char **array2d, t_op *flag)
 	if (flag->small_s)
 		if (put_total(array2d, 0) == ERROR_RETURN)
 			return (ERROR_RETURN);
-	i = -1;
-	while (array2d[++i])
+	i = 0;
+	while (array2d[i])
 	{
 		if (lstat(array2d[i], &stat_buf) != 0)
 			return (perror_message(ERR_STAT));
 		if (flag->small_s == true)
 			put_blocks(stat_buf.st_blocks, 0);
 		if (flag->large_g == true)
-		{
-			if (color_print(array2d[i], stat_buf) == ERROR_RETURN)
-				return (ERROR_RETURN);
-		}
+			color_print(array2d[i], stat_buf);
 		else
-		{
-			if (print_file_dir(array2d[i]) == ERROR_RETURN)
-				return (ERROR_RETURN);
-		}
+			print_file_dir(array2d[i]);
+		i++;
 	}
+	if (flag->large_r)
+		puts("++++++++++++++");
 	return (SUCCESS_RETURN);
 }
 

@@ -6,7 +6,7 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 20:08:28 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/02 22:35:43 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/03 03:31:23 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,11 @@
 # define B_RESET "\033[49m"
 # define B_YELLOW "\033[43m"
 # define B_CYAAN "\033[46m"
+
+void	putstr_red(char *s);
+void	putstr_blue(char *s);
+void	putstr_magent(char *s);
+void	putstr_blue_back_yellow(char *s);
+void	putstr_blue_back_cyaan(char *s);
 
 #endif

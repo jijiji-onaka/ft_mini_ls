@@ -6,7 +6,7 @@
 #    By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/02 02:40:46 by tjinichi          #+#    #+#              #
-#    Updated: 2020/12/03 02:26:19 by tjinichi         ###   ########.fr        #
+#    Updated: 2020/12/03 03:15:33 by tjinichi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ BONUS_SRCFILE =	main_bonus.c \
 			file_check_bonus.c \
 			display_utils_bonus.c \
 			option_small_s_bonus.c \
+			color_print_bonus.c \
 
 SRCDIR = ./srcs/
 BONUS_DIR = ./bonus/
