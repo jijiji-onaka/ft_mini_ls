@@ -6,7 +6,7 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 03:18:49 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/03 06:18:56 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/03 06:44:57 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int			mini_ls(void)
 	if (!(current_dir_file = malloc(sizeof(char *) * \
 			(alloc_size))))
 		return (perror_message(ERR_MALLOC));
-	if (input_dir_file(current_dir_file, ".", 1) == ERROR_RETURN)
+	if (input_dir_file(current_dir_file, ".", false) == ERROR_RETURN)
 		return (ERROR_RETURN);
 	ft_strsort(current_dir_file, &sort_by_mtime_from_little);
 	default_display_2d(current_dir_file);
