@@ -6,7 +6,7 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 03:59:01 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/02 23:56:14 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/03 02:32:43 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ int			display_2d(char **array2d, t_op *flag)
 	int			i;
 	struct stat	stat_buf;
 
-	i = -1;
 	if (flag->small_s)
 		if (put_total(array2d, 0) == ERROR_RETURN)
 			return (ERROR_RETURN);
+	i = -1;
 	while (array2d[++i])
 	{
 		if (lstat(array2d[i], &stat_buf) != 0)
@@ -41,7 +41,7 @@ int			display_2d(char **array2d, t_op *flag)
 	return (SUCCESS_RETURN);
 }
 
-void	default_display_2d(char **array2d)
+void		default_display_2d(char **array2d)
 {
 	int	i;
 

@@ -6,7 +6,7 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 03:34:11 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/02 21:54:45 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/03 02:31:05 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ int		input_dir_file(char **current_dir_file, \
 	{
 		if (ft_memcmp(dp->d_name, ".", 1) == 0)
 			continue ;
-		current_dir_file[i++] = ft_strdup(dp->d_name);
+		current_dir_file[i] = ft_strdup(dp->d_name);
+		i++;
 	}
 	current_dir_file[i] = NULL;
 	closedir(dir);

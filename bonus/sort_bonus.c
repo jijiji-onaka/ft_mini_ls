@@ -6,7 +6,7 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 04:04:52 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/03 02:05:09 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/03 02:45:12 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int		sort_by_mtime_from_little(char *s1, char *s2)
 	return ((s1_time - s2_time));
 }
 
-int		sort_by_ctime_from_little(char *s1, char *s2)
+int		sort_by_createtime_from_little(char *s1, char *s2)
 {
 	struct stat	stat_buf;
 	time_t		s1_time;
@@ -49,9 +49,44 @@ int		sort_by_ctime_from_little(char *s1, char *s2)
 	return ((s1_time - s2_time));
 }
 
+int		sort_by_atime_from_little(char *s1, char *s2)
+{
+	struct stat	stat_buf;
+	time_t		s1_time;
+	time_t		s2_time;
+
+	if (lstat(s1, &stat_buf) != 0)
+		return (INT_MIN);
+	s1_time = stat_buf.st_atime;
+	if (lstat(s2, &stat_buf) != 0)
+		return (INT_MIN);
+	s2_time = stat_buf.st_atime;
+	return ((s1_time - s2_time));
+}
+
+int		sort_by_filesize_from_little(char *s1, char *s2)
+{
+	struct stat	stat_buf;
+	off_t		s1_time;
+	off_t		s2_time;
+
+	if (lstat(s1, &stat_buf) != 0)
+		return (INT_MIN);
+	s1_time = stat_buf.st_size;
+	if (lstat(s2, &stat_buf) != 0)
+		return (INT_MIN);
+	s2_time = stat_buf.st_size;
+	return ((s1_time - s2_time));
+}
+
 void	sort_by_what(char **current_dir_file, t_op *flag)
 {
-	// ft_strsort(current_dir_file, &sort_by_mtime_from_little);
-	if (flag->large_u)
-		ft_strsort(current_dir_file, &sort_by_ctime_from_little);
+	if (flag->large_s)
+		ft_strsort(current_dir_file, &sort_by_filesize_from_little);
+	else if (flag->large_u)
+		ft_strsort(current_dir_file, &sort_by_createtime_from_little);
+	else if (flag->small_u)
+		ft_strsort(current_dir_file, &sort_by_atime_from_little);
+	else
+		ft_strsort(current_dir_file, &sort_by_mtime_from_little);
 }

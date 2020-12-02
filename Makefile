@@ -6,7 +6,7 @@
 #    By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/02 02:40:46 by tjinichi          #+#    #+#              #
-#    Updated: 2020/12/03 01:57:45 by tjinichi         ###   ########.fr        #
+#    Updated: 2020/12/03 02:26:19 by tjinichi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ BONUS_NAME = ft_mini_ls
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -fsanitize=address -Wall -Werror -Wextra
 
 LIBS = utils/Libft/
 LIBFT = utils/Libft/libft.a

@@ -6,7 +6,7 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 02:47:47 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/02 04:21:14 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/03 02:09:13 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 # include <stdlib.h>
 # define ERROR_RETURN 1
 # define SUCCESS_RETURN 0
-# define ERR_OPENDIR "Fail to opendir :\n"
-# define ERR_MALLOC "Fail to malloc :"
-# define ERR_STAT "Fail to lstat :"
+# define ERR_OPENDIR "Fail to opendir \n"
+# define ERR_MALLOC "Fail to malloc "
+# define ERR_STAT "Fail to lstat "
 # define ERR_ARG "usage : ./ft_mini_ls\n"
 
 int	put_error_message(char *s, size_t len);
