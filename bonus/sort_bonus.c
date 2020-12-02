@@ -6,7 +6,7 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 04:04:52 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/03 02:45:12 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/03 03:02:23 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,19 @@ int		sort_by_mtime_from_little(char *s1, char *s2)
 
 	if (lstat(s1, &stat_buf) != 0)
 		return (INT_MIN);
-	s1_time = stat_buf.st_mtime;
+	s1_time = stat_buf.st_mtimespec.tv_sec;
 	if (lstat(s2, &stat_buf) != 0)
 		return (INT_MIN);
-	s2_time = stat_buf.st_mtime;
+	s2_time = stat_buf.st_mtimespec.tv_sec;
+	if (s1_time - s2_time == 0)
+	{
+		if (lstat(s1, &stat_buf) != 0)
+			return (INT_MIN);
+		s1_time = stat_buf.st_mtimespec.tv_nsec;
+		if (lstat(s2, &stat_buf) != 0)
+			return (INT_MIN);
+		s2_time = stat_buf.st_mtimespec.tv_nsec;
+	}
 	return ((s1_time - s2_time));
 }
 
@@ -42,10 +51,19 @@ int		sort_by_createtime_from_little(char *s1, char *s2)
 
 	if (lstat(s1, &stat_buf) != 0)
 		return (INT_MIN);
-	s1_time = stat_buf.st_birthtimespec.tv_sec;
+	s1_time = stat_buf.st_birthtime;
 	if (lstat(s2, &stat_buf) != 0)
 		return (INT_MIN);
-	s2_time = stat_buf.st_birthtimespec.tv_sec;
+	s2_time = stat_buf.st_birthtime;
+	if (s1_time - s2_time == 0)
+	{
+		if (lstat(s1, &stat_buf) != 0)
+			return (INT_MIN);
+		s1_time = stat_buf.st_birthtimespec.tv_nsec;
+		if (lstat(s2, &stat_buf) != 0)
+			return (INT_MIN);
+		s2_time = stat_buf.st_birthtimespec.tv_nsec;
+	}
 	return ((s1_time - s2_time));
 }
 
@@ -61,22 +79,41 @@ int		sort_by_atime_from_little(char *s1, char *s2)
 	if (lstat(s2, &stat_buf) != 0)
 		return (INT_MIN);
 	s2_time = stat_buf.st_atime;
+	if (s1_time - s2_time == 0)
+	{
+		if (lstat(s1, &stat_buf) != 0)
+			return (INT_MIN);
+		s1_time = stat_buf.st_atimespec.tv_nsec;
+		if (lstat(s2, &stat_buf) != 0)
+			return (INT_MIN);
+		s2_time = stat_buf.st_atimespec.tv_nsec;
+	}
 	return ((s1_time - s2_time));
 }
 
 int		sort_by_filesize_from_little(char *s1, char *s2)
 {
 	struct stat	stat_buf;
-	off_t		s1_time;
-	off_t		s2_time;
+	off_t		s1_size;
+	off_t		s2_size;
 
 	if (lstat(s1, &stat_buf) != 0)
 		return (INT_MIN);
-	s1_time = stat_buf.st_size;
+	s1_size = stat_buf.st_size;
 	if (lstat(s2, &stat_buf) != 0)
 		return (INT_MIN);
-	s2_time = stat_buf.st_size;
-	return ((s1_time - s2_time));
+	s2_size = stat_buf.st_size;
+	if (s1_size - s2_size == 0)
+	{
+		if (lstat(s1, &stat_buf) != 0)
+			return (INT_MIN);
+		s1_size = stat_buf.st_birthtimespec.tv_nsec;
+		if (lstat(s2, &stat_buf) != 0)
+			return (INT_MIN);
+		s2_size = stat_buf.st_birthtimespec.tv_nsec;
+		return (-(s1_size - s2_size));
+	}
+	return ((s1_size - s2_size));
 }
 
 void	sort_by_what(char **current_dir_file, t_op *flag)
