@@ -6,7 +6,7 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 17:46:00 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/04 03:08:47 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/04 03:24:01 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define ERR_MALLOC "Fail to malloc "
 # define ERR_STAT "Fail to lstat "
 # define ERR_ARG "usage : ./ft_mini_ls || ./ft_mini_ls -[asSuUR]\n"
-# define NO_SUPPORTED_ARG "This program is only supported by option -[asSuUR]\n"
+# define ERR "usage: ls [-@ABCFGHLOPRSTUWabcdefghiklmnopqrstuwx1%] [file ...]\n"
 
 int	put_error_message(char *s, size_t len);
 int	perror_message(char *s);

@@ -6,7 +6,7 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 17:43:34 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/04 03:04:52 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/04 03:29:02 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,14 @@ static int	option_check(char option, t_op *flag)
 	else if (option == 'a')
 		flag->small_a = true;
 	else if (ft_strchr("@ABCFGHLOPRSTUWabcdefghiklmnopqrstuwx1%", option) \
-				== NULL)
+				!= NULL)
 		return (NOT_SUPPORTED);
 	else
-		return (ERROR_RETURN);
+	{
+		write(2, "ls: illegal option -- ", 22);
+		ft_putchar_fd(option, 2);
+		return (put_error_message("\n", 1));
+	}
 	return (SUCCESS_RETURN);
 }
 

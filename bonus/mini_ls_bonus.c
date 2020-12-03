@@ -6,7 +6,7 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 03:18:49 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/04 03:10:57 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/04 03:59:00 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,9 @@ int			mini_ls_option(char **arg)
 	flag = (t_op){0};
 	op_ret = count_option(arg, &flag);
 	if (op_ret == ERROR_RETURN)
-		return (put_error_message(ERR_ARG, 47));
+		return (put_error_message(ERR, 64));
 	else if (op_ret == NOT_SUPPORTED)
-		return (put_error_message(NO_SUPPORTED_ARG, 51));
+		return (put_error_message(ERR_ARG, 47));
 	if (flag.large_r == true)
 		return (mini_ls_option_large_r(&flag, "."));
 	return (mini_ls_other_option(&flag));
