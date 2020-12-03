@@ -6,7 +6,7 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 03:59:01 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/03 22:53:59 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/04 01:17:48 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int			display_2d(char **array2d, t_op *flag)
 {
 	int			i;
 	struct stat	stat_buf;
-	blkcnt_t 	blocks_width;
+	blkcnt_t	blocks_width;
 
 	if (flag->small_s && array2d[0] != NULL)
 		if (put_total(array2d, 0, &blocks_width) == ERROR_RETURN)

@@ -6,7 +6,7 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 18:53:39 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/03 22:54:27 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/04 01:18:15 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	put_dir_title(char *s)
 
 void		do_recursive(char **current_dir_file, t_op *flag)
 {
-	int 		i;
+	int			i;
 	struct stat	stat_buf;
 
 	i = 0;
@@ -34,7 +34,8 @@ void		do_recursive(char **current_dir_file, t_op *flag)
 			perror_message(ERR_STAT);
 		if (is_dir(stat_buf.st_mode) == 1)
 		{
-			if (mini_ls_option_large_r(flag, current_dir_file[i]) == ERROR_RETURN)
+			if (mini_ls_option_large_r(flag, current_dir_file[i]) == \
+					ERROR_RETURN)
 				ft_putstr_fd(current_dir_file[i], 1);
 		}
 		i++;

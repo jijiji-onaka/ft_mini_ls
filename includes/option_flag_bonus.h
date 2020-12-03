@@ -6,12 +6,14 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 17:44:46 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/03 22:38:21 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/04 01:23:30 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef OPTION_FlAG_BONUS_H
-# define OPTION_FlAG_BONUS_H
+#ifndef OPTION_FLAG_BONUS_H
+# define OPTION_FLAG_BONUS_H
+
+# include <sys/stat.h>
 
 typedef struct	s_op
 {
@@ -24,8 +26,6 @@ typedef struct	s_op
 	int			small_a;
 }				t_op;
 
-# include <sys/stat.h>
-
 int				count_option(char **arg, t_op *flag);
 /*
 ** option -s
@@ -35,7 +35,6 @@ void			put_blocks(blkcnt_t blocks, blkcnt_t blocks_width);
 /*
 ** option -R
 */
-// void			put_dir_title(char *s);
 void			do_recursive(char **current_dir_file, t_op *flag);
 int				mini_ls_option_large_r(t_op *flag, char *current_dir);
 
