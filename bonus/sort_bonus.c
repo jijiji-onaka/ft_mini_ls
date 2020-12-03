@@ -6,7 +6,7 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 04:04:52 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/03 06:36:02 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/03 15:54:37 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,92 +21,72 @@
 
 int		sort_by_mtime_from_little(char *s1, char *s2)
 {
-	struct stat	stat_buf;
-	time_t		s1_time;
-	time_t		s2_time;
+	struct stat	stat_buf1;
+	struct stat	stat_buf2;
 
-	if (lstat(s1, &stat_buf) != 0)
+	if (lstat(s1, &stat_buf1) != 0)
 		return (INT_MIN);
-	s1_time = stat_buf.st_mtimespec.tv_sec;
-	if (lstat(s2, &stat_buf) != 0)
+	if (lstat(s2, &stat_buf2) != 0)
 		return (INT_MIN);
-	s2_time = stat_buf.st_mtimespec.tv_sec;
-	if (s1_time - s2_time == 0)
-	{
-		if (lstat(s1, &stat_buf) != 0)
-			return (INT_MIN);
-		s1_time = stat_buf.st_mtimespec.tv_nsec;
-		if (lstat(s2, &stat_buf) != 0)
-			return (INT_MIN);
-		s2_time = stat_buf.st_mtimespec.tv_nsec;
-	}
-	return ((s1_time - s2_time));
+	if (stat_buf1.st_mtimespec.tv_sec != stat_buf2.st_mtimespec.tv_sec)
+		return (stat_buf1.st_mtimespec.tv_sec - stat_buf2.st_mtimespec.tv_sec);
+	else if (stat_buf1.st_mtimespec.tv_nsec != stat_buf2.st_mtimespec.tv_nsec)
+		return (stat_buf1.st_mtimespec.tv_nsec - \
+				stat_buf2.st_mtimespec.tv_nsec);
+	else
+		return (-ft_strcmp(s1, s2));
 }
 
 int		sort_by_createtime_from_little(char *s1, char *s2)
 {
-	struct stat	stat_buf;
-	time_t		s1_time;
-	time_t		s2_time;
+	struct stat	stat_buf1;
+	struct stat	stat_buf2;
 
-	if (lstat(s1, &stat_buf) != 0)
+	if (lstat(s1, &stat_buf1) != 0)
 		return (INT_MIN);
-	s1_time = stat_buf.st_birthtime;
-	if (lstat(s2, &stat_buf) != 0)
+	if (lstat(s2, &stat_buf2) != 0)
 		return (INT_MIN);
-	s2_time = stat_buf.st_birthtime;
-	if (s1_time - s2_time == 0)
-	{
-		if (lstat(s1, &stat_buf) != 0)
-			return (INT_MIN);
-		s1_time = stat_buf.st_birthtimespec.tv_nsec;
-		if (lstat(s2, &stat_buf) != 0)
-			return (INT_MIN);
-		s2_time = stat_buf.st_birthtimespec.tv_nsec;
-	}
-	return ((s1_time - s2_time));
+	if (stat_buf1.st_birthtime != stat_buf2.st_birthtime)
+		return ((stat_buf1.st_birthtime - stat_buf2.st_birthtime));
+	else if (stat_buf1.st_birthtimespec.tv_nsec != \
+					stat_buf2.st_birthtimespec.tv_nsec)
+		return (stat_buf1.st_birthtimespec.tv_nsec - \
+				stat_buf2.st_birthtimespec.tv_nsec);
+	else
+		return (-ft_strcmp(s1, s2));
 }
 
 int		sort_by_atime_from_little(char *s1, char *s2)
 {
-	struct stat	stat_buf;
-	time_t		s1_time;
-	time_t		s2_time;
+	struct stat	stat_buf1;
+	struct stat	stat_buf2;
 
-	if (lstat(s1, &stat_buf) != 0)
+	if (lstat(s1, &stat_buf1) != 0)
 		return (INT_MIN);
-	s1_time = stat_buf.st_atime;
-	if (lstat(s2, &stat_buf) != 0)
+	if (lstat(s2, &stat_buf2) != 0)
 		return (INT_MIN);
-	s2_time = stat_buf.st_atime;
-	if (s1_time - s2_time == 0)
-	{
-		if (lstat(s1, &stat_buf) != 0)
-			return (INT_MIN);
-		s1_time = stat_buf.st_atimespec.tv_nsec;
-		if (lstat(s2, &stat_buf) != 0)
-			return (INT_MIN);
-		s2_time = stat_buf.st_atimespec.tv_nsec;
-	}
-	return ((s1_time - s2_time));
+	if (stat_buf1.st_atime != stat_buf2.st_atime)
+		return (stat_buf1.st_atime - stat_buf2.st_atime);
+	else if (stat_buf1.st_atimespec.tv_nsec != stat_buf2.st_atimespec.tv_nsec)
+		return (stat_buf1.st_atimespec.tv_nsec - \
+				stat_buf2.st_atimespec.tv_nsec);
+	else
+		return (-ft_strcmp(s1, s2));
 }
 
 int		sort_by_filesize_from_little(char *s1, char *s2)
 {
 	struct stat	stat_buf1;
 	struct stat	stat_buf2;
-	off_t		s1_size;
-	off_t		s2_size;
 
 	if (lstat(s1, &stat_buf1) != 0)
 		return (INT_MIN);
-	s1_size = stat_buf1.st_size;
 	if (lstat(s2, &stat_buf2) != 0)
 		return (INT_MIN);
-	s2_size = stat_buf2.st_size;
-	if (s1_size - s2_size == 0)
+	if (stat_buf1.st_size != stat_buf2.st_size)
+		return (stat_buf1.st_size - stat_buf2.st_size);
+	else
 		return (-ft_strcmp(s1, s2));
-	return ((s1_size - s2_size));
 }
 
 void	sort_by_what(char **current_dir_file, t_op *flag)

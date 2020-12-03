@@ -6,7 +6,7 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 02:44:28 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/03 04:32:32 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/03 17:43:04 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 
 int				mini_ls(void);
 int				mini_ls_option(char **arg);
-int				dir_in_file_num(DIR *dir, int *hidden_file_num);
+size_t			dir_in_file_num(DIR *dir, size_t *hidden_file_num);
 int				input_dir_file(char **current_dir_file, \
 					char *directory, int flag_small_a);
 int				is_dir(mode_t st_mode);

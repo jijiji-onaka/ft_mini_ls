@@ -6,7 +6,7 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 02:55:39 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/02 03:54:57 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/03 18:06:52 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ int	perror_message(char *error_message)
 
 int	perror_message_free(char ***ptr, char *error_message)
 {
-	array_free_2d((void ***)ptr, 0);
+	array_free_2d((void ***)ptr, count_2d(*ptr) + 1);
 	return (perror_message(error_message));
 }

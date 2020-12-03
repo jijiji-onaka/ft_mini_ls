@@ -6,18 +6,18 @@
 #    By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/02 02:40:46 by tjinichi          #+#    #+#              #
-#    Updated: 2020/12/03 03:15:33 by tjinichi         ###   ########.fr        #
+#    Updated: 2020/12/03 22:15:11 by tjinichi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 TEST_DIR = ./42_ft_mini_ls_test/
 
-NAME = ft_mini
-BONUS_NAME = ft_mini_ls
+NAME = ft_mini_ls
+# BONUS_NAME = ft_mini_ls
 
 CC = gcc
 
-CFLAGS = -fsanitize=address -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra
 
 LIBS = utils/Libft/
 LIBFT = utils/Libft/libft.a
@@ -39,6 +39,7 @@ BONUS_SRCFILE =	main_bonus.c \
 			file_check_bonus.c \
 			display_utils_bonus.c \
 			option_small_s_bonus.c \
+			option_large_r_bonus.c \
 			color_print_bonus.c \
 
 SRCDIR = ./srcs/
@@ -51,6 +52,7 @@ OBJS = $(SRCS:.c=.o)
 BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
 TEST = $(addprefix $(TEST_DIR), test.sh)
+LEAK = $(addprefix $(TEST_DIR), leak.sh)
 
 all: $(NAME)
 
@@ -70,14 +72,22 @@ fclean: clean
 
 re: fclean all
 
-bonus: $(BONUS_NAME)
-
-$(BONUS_NAME): $(LIBFT) $(BONUS_OBJS)
-	$(CC) $(CFLAGS) -o $(BONUS_NAME) $(BONUS_OBJS) $(LIBFT)
+bonus: $(LIBFT) $(BONUS_OBJS)
+	$(CC) $(CFLAGS) -o $(NAME) $(BONUS_OBJS) $(LIBFT)
 
 bonus_re: fclean bonus
 
-test: bonus
+test: $(LIBFT) $(BONUS_OBJS)
+	$(CC) -g -fsanitize=address $(CFLAGS) -o $(NAME) $(BONUS_OBJS) $(LIBFT)
 	bash $(TEST)
 
-.PHONY: all clean fclean re FORCE test bonus
+OP =
+
+leak: bonus
+	bash $(LEAK) $(OP)
+
+valgrind: bonus
+	valgrind --leak-check=full -s ./$(NAME) $(OP)
+	rm -rf $(NAME).dSYM
+
+.PHONY: all clean fclean re bonus bonus_re FORCE test leak valgrind

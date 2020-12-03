@@ -6,7 +6,7 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 23:12:16 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/03 04:32:32 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/03 20:10:09 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 
 void	print_file_dir(char *file)
 {
+	char	*file_tmp;
+
+	if ((file_tmp = ft_strrchr(file, '/')) != NULL)
+		file = file_tmp + 1;
 	write(1, file, ft_strlen(file));
 	write(1, "\n", 1);
 }

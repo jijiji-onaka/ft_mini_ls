@@ -6,7 +6,7 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 03:59:01 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/03 04:11:10 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/03 22:53:59 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@ int			display_2d(char **array2d, t_op *flag)
 {
 	int			i;
 	struct stat	stat_buf;
+	blkcnt_t 	blocks_width;
 
-	if (flag->small_s)
-		if (put_total(array2d, 0) == ERROR_RETURN)
+	if (flag->small_s && array2d[0] != NULL)
+		if (put_total(array2d, 0, &blocks_width) == ERROR_RETURN)
 			return (ERROR_RETURN);
 	i = 0;
 	while (array2d[i])
@@ -26,7 +27,7 @@ int			display_2d(char **array2d, t_op *flag)
 		if (lstat(array2d[i], &stat_buf) != 0)
 			return (perror_message(ERR_STAT));
 		if (flag->small_s == true)
-			put_blocks(stat_buf.st_blocks, 0);
+			put_blocks(stat_buf.st_blocks, blocks_width);
 		if (flag->large_g == true)
 			color_print(array2d[i], stat_buf);
 		else

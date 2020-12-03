@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_bonus.c                                       :+:      :+:    :+:   */
+/*   ft_str3join.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/02 02:42:02 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/03 20:12:48 by tjinichi         ###   ########.fr       */
+/*   Created: 2020/12/03 18:36:29 by tjinichi          #+#    #+#             */
+/*   Updated: 2020/12/03 18:41:11 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_mini_ls_bonus.h"
+#include "libft.h"
 
-int	main(int argc, char *argv[])
+char			*ft_str3join(char *s1, char *s2, char *s3)
 {
-	(void)argv;
-	if (argc == 1)
-		return (mini_ls());
-	else
-		return (mini_ls_option(argv));
+	size_t	len;
+	char	*res;
+
+	len = ft_strlen(s1) + ft_strlen(s2) + ft_strlen(s3) + 1;
+	if (!(res = malloc(len)))
+		return (NULL);
+	ft_strlcpy(res, s1, len);
+	ft_strlcat(res, s2, len);
+	ft_strlcat(res, s3, len);
+	return (res);
 }

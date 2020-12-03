@@ -6,7 +6,7 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 03:34:11 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/02 21:06:56 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/03 18:51:38 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,5 @@ int		input_dir_file(char **current_dir_file, \
 	}
 	current_dir_file[i] = NULL;
 	closedir(dir);
-	return (0);
+	return (SUCCESS_RETURN);
 }
