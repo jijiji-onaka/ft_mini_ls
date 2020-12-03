@@ -6,7 +6,7 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 04:04:52 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/02 21:15:17 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/04 02:09:45 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,18 @@
 
 int		sort_by_mtime_from_little(char *s1, char *s2)
 {
-	struct stat	stat_buf;
-	time_t		s1_time;
-	time_t		s2_time;
+	struct stat	stat_buf1;
+	struct stat	stat_buf2;
 
-	if (lstat(s1, &stat_buf) != 0)
+	if (lstat(s1, &stat_buf1) != 0)
 		return (INT_MIN);
-	s1_time = stat_buf.st_mtime;
-	if (lstat(s2, &stat_buf) != 0)
+	if (lstat(s2, &stat_buf2) != 0)
 		return (INT_MIN);
-	s2_time = stat_buf.st_mtime;
-	return ((s1_time - s2_time));
+	if (stat_buf1.st_mtimespec.tv_sec != stat_buf2.st_mtimespec.tv_sec)
+		return (stat_buf1.st_mtimespec.tv_sec - stat_buf2.st_mtimespec.tv_sec);
+	else if (stat_buf1.st_mtimespec.tv_nsec != stat_buf2.st_mtimespec.tv_nsec)
+		return (stat_buf1.st_mtimespec.tv_nsec - \
+				stat_buf2.st_mtimespec.tv_nsec);
+	else
+		return (-ft_strcmp(s1, s2));
 }
