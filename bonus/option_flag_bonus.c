@@ -6,11 +6,25 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 17:43:34 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/03 00:49:09 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/04 03:04:52 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_mini_ls_bonus.h"
+
+static void	for_u(char option, t_op *flag)
+{
+	if (option == 'u')
+	{
+		flag->small_u = true;
+		flag->large_u = false;
+	}
+	else if (option == 'U')
+	{
+		flag->large_u = true;
+		flag->small_u = false;
+	}
+}
 
 static int	option_check(char option, t_op *flag)
 {
@@ -22,12 +36,13 @@ static int	option_check(char option, t_op *flag)
 		flag->small_s = true;
 	else if (option == 'S')
 		flag->large_s = true;
-	else if (option == 'u')
-		flag->small_u = true;
-	else if (option == 'U')
-		flag->large_u = true;
+	else if (option == 'u' || option == 'U')
+		for_u(option, flag);
 	else if (option == 'a')
 		flag->small_a = true;
+	else if (ft_strchr("@ABCFGHLOPRSTUWabcdefghiklmnopqrstuwx1%", option) \
+				== NULL)
+		return (NOT_SUPPORTED);
 	else
 		return (ERROR_RETURN);
 	return (SUCCESS_RETURN);
@@ -36,12 +51,13 @@ static int	option_check(char option, t_op *flag)
 static int	each_option_check(char *option, t_op *flag)
 {
 	int	i;
+	int	ret;
 
 	i = 0;
 	while (option[i])
 	{
-		if (option_check(option[i], flag) == ERROR_RETURN)
-			return (ERROR_RETURN);
+		if ((ret = option_check(option[i], flag)) >= ERROR_RETURN)
+			return (ret);
 		i++;
 	}
 	return (SUCCESS_RETURN);
@@ -61,14 +77,15 @@ static int	on_option_flag(char *arg, t_op *flag)
 int			count_option(char **arg, t_op *flag)
 {
 	int		i;
+	int		ret;
 
 	i = 1;
 	while (arg[i])
 	{
 		if (arg[i][0] == '-')
 		{
-			if (on_option_flag(arg[i] + 1, flag) == ERROR_RETURN)
-				return (ERROR_RETURN);
+			if ((ret = on_option_flag(arg[i] + 1, flag)) >= ERROR_RETURN)
+				return (ret);
 		}
 		else
 			return (ERROR_RETURN);
