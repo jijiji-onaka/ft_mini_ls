@@ -6,7 +6,7 @@
 #    By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/02 02:40:46 by tjinichi          #+#    #+#              #
-#    Updated: 2020/12/04 20:37:55 by tjinichi         ###   ########.fr        #
+#    Updated: 2020/12/05 00:32:20 by tjinichi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,8 +56,8 @@ LEAK = $(addprefix $(TEST_DIR), leak.sh)
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT)
+$(NAME): $(LIBFT) $(BONUS_OBJS)
+	$(CC) $(CFLAGS) -o $(NAME) $(BONUS_OBJS) $(LIBFT)
 
 $(LIBFT):FORCE
 	@make -C $(LIBS)
@@ -72,10 +72,10 @@ fclean: clean
 
 re: fclean all
 
-bonus: $(LIBFT) $(BONUS_OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(BONUS_OBJS) $(LIBFT)
+# bonus: $(LIBFT) $(BONUS_OBJS)
+# 	$(CC) $(CFLAGS) -o $(NAME) $(BONUS_OBJS) $(LIBFT)
 
-bonus_re: fclean bonus
+# bonus_re: fclean bonus
 
 test: $(LIBFT) $(BONUS_OBJS)
 	$(CC) -g -fsanitize=address $(CFLAGS) -o $(NAME) $(BONUS_OBJS) $(LIBFT)
@@ -83,11 +83,11 @@ test: $(LIBFT) $(BONUS_OBJS)
 
 OP =
 
-leak: bonus
+leak: all
 	bash $(LEAK) $(OP)
 
-valgrind: bonus
+valgrind: all
 	valgrind --leak-check=full -s ./$(NAME) $(OP)
 	rm -rf $(NAME).dSYM
 
-.PHONY: all clean fclean re bonus bonus_re FORCE test leak valgrind
+.PHONY: all clean fclean re FORCE test leak valgrind
