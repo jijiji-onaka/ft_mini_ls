@@ -6,7 +6,7 @@
 #    By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/02 02:40:46 by tjinichi          #+#    #+#              #
-#    Updated: 2020/12/04 15:50:14 by tjinichi         ###   ########.fr        #
+#    Updated: 2020/12/04 20:37:55 by tjinichi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,8 @@ CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra
 
-LIBS = utils/Libft/
-LIBFT = utils/Libft/libft.a
+LIBS = ./Libft/
+LIBFT = ./Libft/libft.a
 
 SRCFILE =	main.c \
 			error.c \

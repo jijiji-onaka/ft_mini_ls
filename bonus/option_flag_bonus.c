@@ -6,7 +6,7 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 17:43:34 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/04 05:57:41 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/04 19:37:41 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ static int	option_check(char option, t_op *flag)
 		for_u(option, flag);
 	else if (option == 'a')
 		flag->small_a = true;
+	else if (option == '1' || option == 't' || option == 'r')
+		return (SUCCESS_RETURN);
 	else if (ft_strchr("@ABCFGHLOPRSTUWabcdefghiklmnopqrstuwx1%", option) \
 				!= NULL)
 		return (NOT_SUPPORTED);

@@ -6,7 +6,7 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 21:54:29 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/03 04:32:32 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/04 20:53:16 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		is_exe_file(mode_t st_mode)
 {
 	if (is_symbolic_link(st_mode) == 1)
 		return (ERROR_RETURN);
-	return (st_mode & S_IXUSR);
+	return (st_mode & (S_IXUSR | S_IXGRP | S_IXOTH));
 }
 
 int		is_character_device(mode_t st_mode)

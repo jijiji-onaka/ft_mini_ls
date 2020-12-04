@@ -6,7 +6,7 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 20:08:28 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/03 19:33:02 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/04 20:49:20 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@
 void	putstr_red(char *s);
 void	putstr_blue(char *s);
 void	putstr_magent(char *s);
+void	putstr_yellow(char *s);
+void	putstr_green(char *s);
 void	putstr_blue_back_yellow(char *s);
 void	putstr_blue_back_cyaan(char *s);
 

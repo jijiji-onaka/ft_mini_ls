@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   file_check2_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/02 02:55:39 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/04 19:01:56 by tjinichi         ###   ########.fr       */
+/*   Created: 2020/12/04 20:29:09 by tjinichi          #+#    #+#             */
+/*   Updated: 2020/12/04 20:49:54 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_mini_ls.h"
+#include "../includes/ft_mini_ls_bonus.h"
 
-int	put_error_message(char *error_message, size_t len)
+int		is_fifo(mode_t st_mode)
 {
-	write(2, error_message, len);
-	return (ERROR_RETURN);
+	return (S_ISFIFO(st_mode));
 }
 
-int	perror_message(char *error_message)
+int		is_socket(mode_t st_mode)
 {
-	perror(error_message);
-	return (ERROR_RETURN);
-}
-
-int	perror_message_free(char ***ptr, char *error_message, int cur)
-{
-	array_free_2d((void ***)ptr, cur);
-	return (perror_message(error_message));
+	return (S_ISSOCK(st_mode));
 }

@@ -6,7 +6,7 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 17:44:46 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/04 04:31:21 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/04 19:17:48 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void			put_blocks(blkcnt_t blocks, blkcnt_t blocks_width);
 /*
 ** option -R
 */
-void			do_recursive(char **current_dir_file, t_op *flag);
+int				do_recursive(char **current_dir_file, t_op *flag);
 int				mini_ls_option_large_r(t_op *flag, char *current_dir);
 
 #endif

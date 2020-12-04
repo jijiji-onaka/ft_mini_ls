@@ -6,7 +6,7 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 23:12:16 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/03 20:10:09 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/04 20:54:10 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@ int		color_print(char *file, struct stat stat_buf)
 		putstr_blue(file);
 	else if (is_symbolic_link(stat_buf.st_mode) > 0)
 		putstr_magent(file);
+	else if (is_fifo(stat_buf.st_mode) > 0)
+		putstr_yellow(file);
+	else if (is_socket(stat_buf.st_mode) > 0)
+		putstr_green(file);
 	else if (is_exe_file(stat_buf.st_mode) > 0)
 		putstr_red(file);
 	else if (is_character_device(stat_buf.st_mode) > 0)

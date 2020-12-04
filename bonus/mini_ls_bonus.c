@@ -6,7 +6,7 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 03:18:49 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/04 03:59:00 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/04 20:13:09 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,14 @@ int			mini_ls(void)
 	if ((dir = opendir(".")) == NULL)
 		return (perror_message(ERR_OPENDIR));
 	alloc_size = dir_in_file_num(dir, &hidden_file_num) - hidden_file_num + 1;
-	closedir(dir);
+	if (alloc_size == -1)
+		return (ERROR_RETURN);
+	if (closedir(dir) == -1)
+		return (perror_message(ERR_CLOSEDIR));
 	if (!(current_dir_file = malloc(sizeof(char *) * \
 			(alloc_size))))
 		return (perror_message(ERR_MALLOC));
-	if (input_dir_file(current_dir_file, ".", false) == ERROR_RETURN)
+	if (input_dir_file(current_dir_file, ".", false) != SUCCESS_RETURN)
 		return (ERROR_RETURN);
 	ft_strsort(current_dir_file, &sort_by_mtime_from_little);
 	default_display_2d(current_dir_file);
@@ -47,11 +50,12 @@ static int	mini_ls_other_option(t_op *flag)
 	alloc_size = dir_in_file_num(dir, &hidden_file_num) - hidden_file_num + 1;
 	if (flag->small_a == true)
 		alloc_size += hidden_file_num;
-	closedir(dir);
+	if (closedir(dir) == -1)
+		return (perror_message(ERR_CLOSEDIR));
 	if (!(current_dir_file = malloc(sizeof(char *) * \
 			(alloc_size))))
 		return (perror_message(ERR_MALLOC));
-	if (input_dir_file(current_dir_file, ".", flag->small_a) == ERROR_RETURN)
+	if (input_dir_file(current_dir_file, ".", flag->small_a) != SUCCESS_RETURN)
 		return (ERROR_RETURN);
 	sort_by_what(current_dir_file, flag);
 	return_value = display_2d(current_dir_file, flag);
