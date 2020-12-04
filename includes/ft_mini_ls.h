@@ -6,7 +6,7 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 02:44:28 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/04 20:24:21 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/05 00:41:33 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # include "error.h"
 # include "display.h"
 # include "sort.h"
-# include "../Libft/srcs/libft.h"
+# include "../utils/Libft/srcs/libft.h"
 
 int		mini_ls(void);
 int		dir_in_file_num(DIR *dir, int *hidden_file_num);
