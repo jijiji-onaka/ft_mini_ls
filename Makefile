@@ -6,7 +6,7 @@
 #    By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/02 02:40:46 by tjinichi          #+#    #+#              #
-#    Updated: 2020/12/04 00:48:51 by tjinichi         ###   ########.fr        #
+#    Updated: 2020/12/04 15:50:14 by tjinichi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,7 +80,6 @@ bonus_re: fclean bonus
 test: $(LIBFT) $(BONUS_OBJS)
 	$(CC) -g -fsanitize=address $(CFLAGS) -o $(NAME) $(BONUS_OBJS) $(LIBFT)
 	bash $(TEST)
-	make clean
 
 OP =
 
