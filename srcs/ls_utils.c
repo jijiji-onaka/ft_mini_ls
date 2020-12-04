@@ -57,7 +57,7 @@ int		input_dir_file(char **current_dir_file, \
 	current_dir_file[i] = NULL;
 	if (errno != 0 && dp == NULL)
 		return (perror_message_free(&current_dir_file, ERR_READDIR, i));
-	if (closedir(dir) == 1)
+	if (closedir(dir) == -1)
 		return (perror_message_free(&current_dir_file, ERR_CLOSEDIR, i));
 	return (SUCCESS_RETURN);
 }
