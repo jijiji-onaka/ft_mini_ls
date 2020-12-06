@@ -6,7 +6,7 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 04:04:52 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/04 02:15:22 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/06 21:10:31 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ int		sort_by_mtime_from_little(char *s1, char *s2)
 	if (lstat(s2, &stat_buf2) != 0)
 		return (INT_MIN);
 	if (stat_buf1.st_mtimespec.tv_sec != stat_buf2.st_mtimespec.tv_sec)
-		return (stat_buf1.st_mtimespec.tv_sec - stat_buf2.st_mtimespec.tv_sec);
+		return (stat_buf1.st_mtimespec.tv_sec > stat_buf2.st_mtimespec.tv_sec);
 	else if (stat_buf1.st_mtimespec.tv_nsec != stat_buf2.st_mtimespec.tv_nsec)
-		return (stat_buf1.st_mtimespec.tv_nsec - \
+		return (stat_buf1.st_mtimespec.tv_nsec > \
 				stat_buf2.st_mtimespec.tv_nsec);
 	else
 		return (-ft_strcmp(s1, s2));

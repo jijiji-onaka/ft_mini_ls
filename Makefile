@@ -6,7 +6,7 @@
 #    By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/02 02:40:46 by tjinichi          #+#    #+#              #
-#    Updated: 2020/12/05 00:42:02 by tjinichi         ###   ########.fr        #
+#    Updated: 2020/12/07 04:31:43 by tjinichi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ CFLAGS = -Wall -Werror -Wextra
 
 LIBS = ./utils/Libft/
 LIBFT = ./utils/Libft/libft.a
+LFLAGS = -L $(LIBS) -lft
 
 SRCFILE =	main.c \
 			error.c \
@@ -50,27 +51,59 @@ BONUS_DIR = ./bonus/
 SRCS = $(addprefix $(SRCDIR), $(SRCFILE))
 BONUS_SRCS = $(addprefix $(BONUS_DIR), $(BONUS_SRCFILE))
 
-OBJS = $(SRCS:.c=.o)
-BONUS_OBJS = $(BONUS_SRCS:.c=.o)
+BONUS_SRC	= $(notdir $(BONUS_SRCS))
+# OBJ = $(BONUS_SRC:.c=.o)
+BONUS_OBJ = $(BONUS_SRC:.c=.o)
+
+OBJDIR		= $(BONUS_DIR)objs/
+BONUS_OBJS	= $(addprefix $(OBJDIR), $(BONUS_OBJ))
 
 TEST = $(addprefix $(TEST_DIR), test.sh)
 LEAK = $(addprefix $(TEST_DIR), leak.sh)
 
+# ============================ COLOR =========================
+RESET		= \033[0m
+RED			= \033[0;31m
+GREEN		= \033[0;32m
+YELLOW		= \033[0;33m
+BLUE		= \033[0;34m
+MAGENT		= \033[0;35m
+CYAAN		= \033[0;36m
+WHITE		= \033[0;37m
+B_RESET		= \033[0;49m
+B_YELLOW	= \033[0;43m
+B_CYAAN		= \033[0;46m
+BOLD		= \033[1m
+UNDER_LINE	= \033[4m
+
+# ============================================================
+
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(BONUS_OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(BONUS_OBJS) $(LIBFT)
+	@$(CC) $(CFLAGS) $^ $(LFLAGS) -o $@
+	@echo "$(GREEN)$(BOLD)Finished.\nYou can use $@$(RESET)"
 
 $(LIBFT):FORCE
-	@make -C $(LIBS)
+	@$(MAKE) -C $(LIBS)
+
+$(OBJDIR)%.o : $(BONUS_DIR)%.c
+	@echo "$(YELLOW)Compiling $^ $(RESET)to $(YELLOW)$@$(RESET)"
+	@mkdir -p $(OBJDIR)
+	@$(CC) $(CFLAGS) -c $^ -o $@
 
 clean:
-	@make clean -C $(LIBS)
-	rm -f $(OBJS) $(BONUS_OBJS)
+	@echo "$(RED)$(BOLD)[Deleted] \n$(LIBS)objs$(RESET)\n"
+	@$(MAKE) -C $(LIBS) clean
+	@echo "$(RED)$(BOLD)[Deleted] \n$(BONUS_OBJ)$(RESET)\n"
+	@rm -rf $(OBJDIR)
 
 fclean: clean
-	@make fclean -C $(LIBS)
-	rm -f $(NAME)
+	@echo "$(RED)$(BOLD)[Deleted] \n$(LIBFT)$(RESET)\n"
+	@$(MAKE) -C $(LIBS) fclean
+	@echo "$(RED)$(BOLD)[Deleted] \n$(NAME)$(RESET)"
+	@rm -f $(NAME)
+
 
 re: fclean all
 

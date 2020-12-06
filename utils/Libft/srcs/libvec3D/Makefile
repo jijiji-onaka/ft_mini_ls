@@ -6,7 +6,7 @@
 #    By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/23 15:04:22 by tjinichi          #+#    #+#              #
-#    Updated: 2020/11/30 22:20:13 by tjinichi         ###   ########.fr        #
+#    Updated: 2020/12/07 04:34:59 by tjinichi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,9 +29,17 @@ SRCS =	add_vec.c \
 		cos_vec.c \
 		scal_sub_vec.c \
 
-OBJS = ${SRCS:.c=.o}
+OBJ_TMP = ${SRCS:.c=.o}
 
-%.o: %.c
+OBJDIR = ./objs/
+
+OBJS	= $(addprefix $(OBJDIR), $(OBJ_TMP))
+
+# %.o: %.c
+# 	@$(CC) $(CFLAGS) -c -o $@ $<
+
+$(OBJDIR)%.o : ./%.c
+	@mkdir -p $(OBJDIR)
 	@$(CC) $(CFLAGS) -c -o $@ $<
 
 $(NAME): $(OBJS)
@@ -40,7 +48,7 @@ $(NAME): $(OBJS)
 all:	$(NAME)
 
 clean:
-	@$(RM) $(OBJS)
+	@$(RM) -r $(OBJDIR)
 
 fclean: clean
 	@$(RM) $(NAME)

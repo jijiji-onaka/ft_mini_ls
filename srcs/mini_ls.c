@@ -6,7 +6,7 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 03:18:49 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/04 20:12:27 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/07 03:18:02 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		mini_ls(void)
 	if ((dir = opendir(".")) == NULL)
 		return (perror_message(ERR_OPENDIR));
 	alloc_size = dir_in_file_num(dir, &hidden_file_num) - hidden_file_num + 1;
-	if (alloc_size == -1)
+	if (alloc_size == -1 - hidden_file_num + 1)
 		return (ERROR_RETURN);
 	if (closedir(dir) == -1)
 		return (perror_message(ERR_CLOSEDIR));
@@ -36,3 +36,9 @@ int		mini_ls(void)
 	array_free_2d((void ***)&current_dir_file, alloc_size);
 	return (SUCCESS_RETURN);
 }
+
+// __attribute__((destructor))
+// void end()
+// {
+// 	system("leaks ");
+// }

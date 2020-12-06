@@ -6,7 +6,7 @@
 #    By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/23 20:15:31 by tjinichi          #+#    #+#              #
-#    Updated: 2020/12/03 18:36:55 by tjinichi         ###   ########.fr        #
+#    Updated: 2020/12/07 04:30:54 by tjinichi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,98 +16,132 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
-RM = rm -f
+RM = rm
 
-SRCS =	srcs/ft_atoi.c \
-		srcs/ft_bzero.c \
-		srcs/ft_calloc.c \
-		srcs/ft_isalnum.c \
-		srcs/ft_isalpha.c \
-		srcs/ft_isascii.c \
-		srcs/ft_isdigit.c \
-		srcs/ft_isprint.c \
-		srcs/ft_itoa.c \
-		srcs/ft_memccpy.c \
-		srcs/ft_memchr.c \
-		srcs/ft_memcmp.c \
-		srcs/ft_memcpy.c \
-		srcs/ft_memmove.c \
-		srcs/ft_memset.c \
-		srcs/ft_putchar_fd.c \
-		srcs/ft_putendl_fd.c \
-		srcs/ft_putnbr_fd.c \
-		srcs/ft_putstr_fd.c \
-		srcs/ft_split.c \
-		srcs/ft_strchr.c \
-		srcs/ft_strdup.c \
-		srcs/ft_strjoin.c \
-		srcs/ft_strjoinch.c \
-		srcs/ft_strlcat.c \
-		srcs/ft_strlcpy.c \
-		srcs/ft_strlen.c \
-		srcs/ft_strmapi.c \
-		srcs/ft_strncmp.c \
-		srcs/ft_strnstr.c \
-		srcs/ft_strrchr.c \
-		srcs/ft_strtrim.c \
-		srcs/ft_substr.c \
-		srcs/ft_tolower.c \
-		srcs/ft_toupper.c \
-		srcs/ft_isspace.c \
-		srcs/ft_stoi.c \
-		srcs/ft_stod.c \
-		srcs/GNL/get_next_line.c \
-		srcs/GNL/get_next_line_utils.c \
-		srcs/ft_check_file_tail.c \
-		srcs/count_2d.c \
-		srcs/array_free_2d.c \
-		srcs/ft_numlen.c \
-		srcs/create_file_name.c \
-		srcs/ft_stov.c \
-		srcs/ft_strcmp.c \
-		srcs/joint_number.c \
-		srcs/file_tail_number.c \
-		srcs/ft_swap.c \
-		srcs/ft_strsort.c \
-		srcs/ft_two_2d_ptr_free.c \
-		srcs/ft_ptr_free.c \
-		srcs/ft_str3join.c \
+SRCFILE =	ft_atoi.c \
+		ft_bzero.c \
+		ft_calloc.c \
+		ft_isalnum.c \
+		ft_isalpha.c \
+		ft_isascii.c \
+		ft_isdigit.c \
+		ft_isprint.c \
+		ft_itoa.c \
+		ft_memccpy.c \
+		ft_memchr.c \
+		ft_memcmp.c \
+		ft_memcpy.c \
+		ft_memmove.c \
+		ft_memset.c \
+		ft_putchar_fd.c \
+		ft_putendl_fd.c \
+		ft_putnbr_fd.c \
+		ft_putstr_fd.c \
+		ft_split.c \
+		ft_strchr.c \
+		ft_strdup.c \
+		ft_strjoin.c \
+		ft_strjoinch.c \
+		ft_strlcat.c \
+		ft_strlcpy.c \
+		ft_strlen.c \
+		ft_strmapi.c \
+		ft_strncmp.c \
+		ft_strnstr.c \
+		ft_strrchr.c \
+		ft_strtrim.c \
+		ft_substr.c \
+		ft_tolower.c \
+		ft_toupper.c \
+		ft_isspace.c \
+		ft_stoi.c \
+		ft_stod.c \
+		get_next_line.c \
+		get_next_line_utils.c \
+		ft_check_file_tail.c \
+		count_2d.c \
+		array_free_2d.c \
+		ft_numlen.c \
+		create_file_name.c \
+		ft_stov.c \
+		ft_strcmp.c \
+		joint_number.c \
+		file_tail_number.c \
+		ft_swap.c \
+		ft_strsort.c \
+		ft_two_2d_ptr_free.c \
+		ft_ptr_free.c \
+		ft_str3join.c \
+		ft_lstadd_back.c \
+		ft_lstadd_front.c \
+		ft_lstclear.c \
+		ft_lstiter.c \
+		ft_lstlast.c \
+		ft_lstnew.c \
+		ft_lstsize.c \
+		ft_lstdelone.c \
+		ft_lstmap.c \
+
+SRCDIR = ./srcs/
+
+SRCS = $(addprefix $(SRCDIR), $(SRCFILE))
+
+SRC_TMP	= $(notdir $(SRCS))
 
 
-BONUS =	srcs/ft_lstadd_back.c \
-		srcs/ft_lstadd_front.c \
-		srcs/ft_lstclear.c \
-		srcs/ft_lstiter.c \
-		srcs/ft_lstlast.c \
-		srcs/ft_lstnew.c \
-		srcs/ft_lstsize.c \
-		srcs/ft_lstdelone.c \
-		srcs/ft_lstmap.c \
+OBJ_TMP = $(SRC_TMP:.c=.o)
 
-OBJS = $(SRCS:.c=.o)
-BONUSOBJS = $(BONUS:.c=.o)
+OBJDIR = $(SRCDIR)objs/
 
-%.o: %.c
+OBJS	= $(addprefix $(OBJDIR), $(OBJ_TMP))
+
+# ============================ COLOR =========================
+RESET		= \033[0m
+RED			= \033[0;31m
+GREEN		= \033[0;32m
+YELLOW		= \033[0;33m
+BLUE		= \033[0;34m
+MAGENT		= \033[0;35m
+CYAAN		= \033[0;36m
+WHITE		= \033[0;37m
+B_RESET		= \033[0;49m
+B_YELLOW	= \033[0;43m
+B_CYAAN		= \033[0;46m
+BOLD		= \033[1m
+UNDER_LINE	= \033[0;4m
+
+# ============================================================
+
+T		=	$(words ${OBJS})
+N		=	0
+# words = 文字列の個数を数えます
+# eval = 文字列を評価します
+C		=	$(words $N)${eval N += 1}
+ECHO	=	"[`expr $C  '*' 100 / $T`%]"
+
+$(OBJDIR)%.o : $(SRCDIR)%.c
+	@mkdir -p $(OBJDIR)
 	@$(CC) $(CFLAGS) -c -o $@ $<
+	@printf " %-100b\r" "$(YELLOW)$(ECHO) Compiling  $(RESET)$(UNDER_LINE)"$@"$(RESET)"
+
 
 $(NAME): $(OBJS)
 	@make -C ./srcs/libvec3D
 	@cp ./srcs/libvec3D/libvec.a $(NAME)
 	@ar rcs $(NAME) $(OBJS)
+	@printf "\r                                                             \r$(GREEN)$(BOLD)created libft.a$(RESET)\n"
 
 all:	$(NAME)
 
 clean:
 	@make clean -C ./srcs/libvec3D
-	@$(RM) $(OBJS) $(BONUSOBJS)
+	@$(RM) -rf $(OBJDIR)
 
 fclean: clean
 	@make fclean -C ./srcs/libvec3D
-	@$(RM) $(NAME)
+	@$(RM) -f $(NAME)
+
 
 re:	fclean all
 
-bonus:	all $(BONUSOBJS)
-	ar rcs $(NAME) $(BONUSOBJS)
-
-.PHONY:	all clean fclean re bonus
+.PHONY:	all clean fclean re

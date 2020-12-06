@@ -6,7 +6,7 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 03:18:49 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/04 20:13:09 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/07 03:31:03 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ int			mini_ls(void)
 {
 	DIR				*dir;
 	char			**current_dir_file;
-	int				alloc_size;
+	size_t			alloc_size;
 	size_t			hidden_file_num;
 
 	if ((dir = opendir(".")) == NULL)
 		return (perror_message(ERR_OPENDIR));
 	alloc_size = dir_in_file_num(dir, &hidden_file_num) - hidden_file_num + 1;
-	if (alloc_size == -1)
+	if (alloc_size == -1 - hidden_file_num + 1)
 		return (ERROR_RETURN);
 	if (closedir(dir) == -1)
 		return (perror_message(ERR_CLOSEDIR));
@@ -41,13 +41,15 @@ static int	mini_ls_other_option(t_op *flag)
 {
 	DIR				*dir;
 	char			**current_dir_file;
-	int				alloc_size;
+	size_t			alloc_size;
 	size_t			hidden_file_num;
 	int				return_value;
 
 	if ((dir = opendir(".")) == NULL)
 		return (perror_message(ERR_OPENDIR));
 	alloc_size = dir_in_file_num(dir, &hidden_file_num) - hidden_file_num + 1;
+	if (alloc_size == -1 - hidden_file_num + 1)
+		return (ERROR_RETURN);
 	if (flag->small_a == true)
 		alloc_size += hidden_file_num;
 	if (closedir(dir) == -1)
