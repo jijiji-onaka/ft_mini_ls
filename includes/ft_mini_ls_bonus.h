@@ -6,7 +6,7 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 02:44:28 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/05 00:41:30 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/08 17:04:33 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,7 @@ int				is_character_device(mode_t st_mode);
 int				is_block_device(mode_t st_mode);
 int				is_fifo(mode_t st_mode);
 int				is_socket(mode_t st_mode);
+int				is_w_authority(mode_t st_mode);
+
 
 #endif

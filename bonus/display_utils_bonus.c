@@ -6,7 +6,7 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 23:12:16 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/04 20:54:10 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/08 17:12:58 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,12 @@ int		color_print(char *file, struct stat stat_buf)
 {
 	if (lstat(file, &stat_buf) != 0)
 		return (perror_message(ERR_STAT));
-	if (is_dir(stat_buf.st_mode) > 0)
+	if (is_dir(stat_buf.st_mode) > 0 && is_w_authority(stat_buf.st_mode) > 0)
+	{
+		puts("1");
+		putstr_back_yellow(file);
+	}
+	else if (is_dir(stat_buf.st_mode) > 0)
 		putstr_blue(file);
 	else if (is_symbolic_link(stat_buf.st_mode) > 0)
 		putstr_magent(file);

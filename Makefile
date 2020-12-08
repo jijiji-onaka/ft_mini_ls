@@ -6,7 +6,7 @@
 #    By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/02 02:40:46 by tjinichi          #+#    #+#              #
-#    Updated: 2020/12/07 04:31:43 by tjinichi         ###   ########.fr        #
+#    Updated: 2020/12/08 17:41:00 by tjinichi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,28 +78,41 @@ UNDER_LINE	= \033[4m
 
 # ============================================================
 
+# ============================ Increment % ===================
+
+T		=	$(words ${BONUS_OBJS})
+N		=	0
+# words = 文字列の個数を数えます
+# eval = 文字列を評価します
+C		=	$(words $N)${eval N += 1}
+ECHO	=	"[`expr $C  '*' 100 / $T`%]"
+
+# ============================================================
+
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(BONUS_OBJS)
+	@printf "\r                                                             \r$(GREEN)$(BOLD)created $(notdir $(BONUS_OBJS))$(RESET)\n"
 	@$(CC) $(CFLAGS) $^ $(LFLAGS) -o $@
-	@echo "$(GREEN)$(BOLD)Finished.\nYou can use $@$(RESET)"
+	@echo "\n$(GREEN)$(BOLD)$(UNDER_LINE)Finished.\nYou can use $@$(RESET)"
 
 $(LIBFT):FORCE
 	@$(MAKE) -C $(LIBS)
 
 $(OBJDIR)%.o : $(BONUS_DIR)%.c
-	@echo "$(YELLOW)Compiling $^ $(RESET)to $(YELLOW)$@$(RESET)"
+	@printf " %-100b\r" "$(YELLOW)$(ECHO) Compiling  $(RESET)$(UNDER_LINE)"$@"$(RESET)"
 	@mkdir -p $(OBJDIR)
 	@$(CC) $(CFLAGS) -c $^ -o $@
 
 clean:
 	@echo "$(RED)$(BOLD)[Deleted] \n$(LIBS)objs$(RESET)\n"
 	@$(MAKE) -C $(LIBS) clean
-	@echo "$(RED)$(BOLD)[Deleted] \n$(BONUS_OBJ)$(RESET)\n"
+	@echo "$(RED)$(BOLD)[Deleted] \n$(BONUS_OBJ)$(RESET)"
 	@rm -rf $(OBJDIR)
 
-fclean: clean
-	@echo "$(RED)$(BOLD)[Deleted] \n$(LIBFT)$(RESET)\n"
+fclean:
+	make clean
+	@echo "\n$(RED)$(BOLD)[Deleted] \n$(LIBFT)$(RESET)\n"
 	@$(MAKE) -C $(LIBS) fclean
 	@echo "$(RED)$(BOLD)[Deleted] \n$(NAME)$(RESET)"
 	@rm -f $(NAME)

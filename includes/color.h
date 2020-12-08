@@ -6,7 +6,7 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 20:08:28 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/04 20:49:20 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/08 17:14:51 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define COLOR_H
 
 # define RESET	"\033[0m"
+# define BLACK	"\033[30m"
 # define RED	"\033[31m"
 # define GREEN	"\033[32m"
 # define YELLOW	"\033[33m"
@@ -33,5 +34,6 @@ void	putstr_yellow(char *s);
 void	putstr_green(char *s);
 void	putstr_blue_back_yellow(char *s);
 void	putstr_blue_back_cyaan(char *s);
+void	putstr_back_yellow(char *s);
 
 #endif
