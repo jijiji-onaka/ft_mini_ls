@@ -6,7 +6,7 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 18:53:39 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/07 04:36:17 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/12 01:31:56 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ int			do_recursive(char **current_dir_file, t_op *flag)
 			perror_message(ERR_STAT);
 		if (is_dir(stat_buf.st_mode) == 1)
 		{
-			if ((rc1 = check_file_tail(current_dir_file[i], ".")) == -1)
+			if ((rc1 = check_strtail(current_dir_file[i], ".")) == -1)
 				return (perror_message(ERR_MALLOC));
-			if ((rc2 = check_file_tail(current_dir_file[i], "..")) == -1)
+			if ((rc2 = check_strtail(current_dir_file[i], "..")) == -1)
 				return (perror_message(ERR_MALLOC));
 			if (flag->small_a && flag->large_r && (rc1 == 1 || rc2 == 1))
 				continue ;
@@ -81,11 +81,11 @@ int			mini_ls_option_large_r(t_op *flag, char *current_dir)
 		return (perror_message(ERR_MALLOC));
 	if (input_dir_file(current_dir_file, current_dir, flag->small_a) != 0)
 		return (ERROR_RETURN);
-	sort_by_what(current_dir_file, flag);
+	sort_by_what(current_dir_file, flag, alloc_size);
 	put_dir_title(current_dir);
 	if ((return_value = display_2d(current_dir_file, flag)) == ERROR_RETURN)
 		return (free_return(&current_dir_file, alloc_size));
 	return_value = do_recursive(current_dir_file, flag);
-	array_free_2d((void ***)&current_dir_file, alloc_size);
+	ptr_2d_free((void ***)&current_dir_file, alloc_size);
 	return (return_value);
 }

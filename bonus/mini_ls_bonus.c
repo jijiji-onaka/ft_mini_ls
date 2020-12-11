@@ -6,7 +6,7 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 03:18:49 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/12 01:25:44 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/12 01:29:10 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,10 @@ int			mini_ls(void)
 		return (perror_message(ERR_MALLOC));
 	if (input_dir_file(current_dir_file, ".", false) != SUCCESS_RETURN)
 		return (ERROR_RETURN);
-	ft_strsort(current_dir_file, &sort_by_mtime_from_little);
+	marge_strsort(current_dir_file, 0, alloc_size - 2, \
+		&sort_by_mtime_from_little);
 	default_display_2d(current_dir_file);
-	array_free_2d((void ***)&current_dir_file, alloc_size);
+	ptr_2d_free((void ***)&current_dir_file, alloc_size);
 	return (SUCCESS_RETURN);
 }
 
@@ -61,7 +62,7 @@ static int	mini_ls_other_option(t_op *flag)
 		return (ERROR_RETURN);
 	sort_by_what(current_dir_file, flag, alloc_size);
 	return_value = display_2d(current_dir_file, flag);
-	array_free_2d((void ***)&current_dir_file, alloc_size);
+	ptr_2d_free((void ***)&current_dir_file, alloc_size);
 	return (return_value);
 }
 
