@@ -1,21 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_bonus.h                                       :+:      :+:    :+:   */
+/*   check_strtail_num.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/02 17:46:33 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/12 01:26:33 by tjinichi         ###   ########.fr       */
+/*   Created: 2020/12/10 20:37:53 by tjinichi          #+#    #+#             */
+/*   Updated: 2020/12/11 21:25:54 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SORT_BONUS_H
-# define SORT_BONUS_H
+#include "../../includes/string_func.h"
 
-# include "option_flag_bonus.h"
+int			check_strtail_num(char *s, char *tail)
+{
+	char	*tmp;
+	size_t	tail_len;
 
-int		sort_by_mtime_from_little(char *s1, char *s2);
-void	sort_by_what(char **current_dir_file, t_op *flag, int alloc_size);
-
-#endif
+	tail_len = ft_strlen(tail);
+	tmp = ft_substr(s, ft_strlen(s) - tail_len, tail_len);
+	if (tmp == NULL)
+		return (-1);
+	if (ft_strncmp(tmp, tail, tail_len) == 0)
+	{
+		free(tmp);
+		return (1);
+	}
+	free(tmp);
+	return (0);
+}

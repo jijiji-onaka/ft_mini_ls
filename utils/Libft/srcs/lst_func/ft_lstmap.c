@@ -1,21 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_bonus.h                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/02 17:46:33 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/12 01:26:33 by tjinichi         ###   ########.fr       */
+/*   Created: 2020/06/23 17:41:35 by tjinichi          #+#    #+#             */
+/*   Updated: 2020/12/11 23:27:41 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SORT_BONUS_H
-# define SORT_BONUS_H
+#include "../../includes/lst_func.h"
 
-# include "option_flag_bonus.h"
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+{
+	t_list	*new_list;
+	t_list	*tmp;
 
-int		sort_by_mtime_from_little(char *s1, char *s2);
-void	sort_by_what(char **current_dir_file, t_op *flag, int alloc_size);
-
-#endif
+	if (!lst || !f || !del)
+		return (NULL);
+	new_list = NULL;
+	while (lst)
+	{
+		if (!(tmp = ft_lstnew(f(lst->content))))
+		{
+			ft_lstclear(&new_list, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&new_list, tmp);
+		lst = lst->next;
+	}
+	return (new_list);
+}

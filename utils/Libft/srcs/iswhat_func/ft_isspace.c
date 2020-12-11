@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_bonus.h                                       :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/02 17:46:33 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/12 01:26:33 by tjinichi         ###   ########.fr       */
+/*   Created: 2020/09/26 23:47:38 by tjinichi          #+#    #+#             */
+/*   Updated: 2020/12/11 22:07:24 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SORT_BONUS_H
-# define SORT_BONUS_H
+#include "../../includes/iswhat_func.h"
 
-# include "option_flag_bonus.h"
-
-int		sort_by_mtime_from_little(char *s1, char *s2);
-void	sort_by_what(char **current_dir_file, t_op *flag, int alloc_size);
-
-#endif
+int	ft_isspace(char c)
+{
+	if (c && (c == ' ' || c == '\n' || c == '\t' ||
+			c == '\v' || c == '\f' || c == '\r'))
+		return (1);
+	return (0);
+}

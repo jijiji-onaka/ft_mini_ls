@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_bonus.h                                       :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/02 17:46:33 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/12 01:26:33 by tjinichi         ###   ########.fr       */
+/*   Created: 2020/06/22 23:01:06 by tjinichi          #+#    #+#             */
+/*   Updated: 2020/12/11 21:31:46 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SORT_BONUS_H
-# define SORT_BONUS_H
+#include "../../includes/convert_func.h"
 
-# include "option_flag_bonus.h"
-
-int		sort_by_mtime_from_little(char *s1, char *s2);
-void	sort_by_what(char **current_dir_file, t_op *flag, int alloc_size);
-
-#endif
+int	ft_tolower(int c)
+{
+	if (c >= 'A' && c <= 'Z')
+		return (c ^ 32);
+	return (c);
+}

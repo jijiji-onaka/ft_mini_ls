@@ -1,21 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_bonus.h                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/02 17:46:33 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/12 01:26:33 by tjinichi         ###   ########.fr       */
+/*   Created: 2020/06/22 23:04:25 by tjinichi          #+#    #+#             */
+/*   Updated: 2020/12/11 21:26:01 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SORT_BONUS_H
-# define SORT_BONUS_H
+#include "../../includes/string_func.h"
 
-# include "option_flag_bonus.h"
+char	*ft_strchr(const char *s, int c)
+{
+	char	*s_tmp;
 
-int		sort_by_mtime_from_little(char *s1, char *s2);
-void	sort_by_what(char **current_dir_file, t_op *flag, int alloc_size);
-
-#endif
+	if (!s)
+		return (NULL);
+	s_tmp = (char *)s;
+	while (*s_tmp)
+	{
+		if (*s_tmp == c)
+			return (s_tmp);
+		s_tmp++;
+	}
+	if (*s_tmp == '\0' && c == '\0')
+		return (s_tmp);
+	return (NULL);
+}

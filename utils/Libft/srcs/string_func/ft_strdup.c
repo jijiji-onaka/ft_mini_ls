@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_bonus.h                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/02 17:46:33 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/12 01:26:33 by tjinichi         ###   ########.fr       */
+/*   Created: 2020/06/22 23:24:47 by tjinichi          #+#    #+#             */
+/*   Updated: 2020/12/11 21:26:09 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SORT_BONUS_H
-# define SORT_BONUS_H
+#include "../../includes/string_func.h"
 
-# include "option_flag_bonus.h"
+char	*ft_strdup(const char *s1)
+{
+	char	*res;
+	size_t	len;
 
-int		sort_by_mtime_from_little(char *s1, char *s2);
-void	sort_by_what(char **current_dir_file, t_op *flag, int alloc_size);
-
-#endif
+	if (s1 == NULL)
+		return (ft_strdup(""));
+	len = ft_strlen(s1) + 1;
+	if (!(res = malloc(sizeof(char) * (len))))
+		return (NULL);
+	ft_memcpy(res, s1, len);
+	return (res);
+}

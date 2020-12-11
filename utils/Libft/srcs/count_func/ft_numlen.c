@@ -1,21 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_bonus.h                                       :+:      :+:    :+:   */
+/*   ft_numlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/02 17:46:33 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/12 01:26:33 by tjinichi         ###   ########.fr       */
+/*   Created: 2020/10/23 01:57:21 by tjinichi          #+#    #+#             */
+/*   Updated: 2020/12/11 21:30:46 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SORT_BONUS_H
-# define SORT_BONUS_H
+#include "../../includes/count_func.h"
 
-# include "option_flag_bonus.h"
+long long		ft_numlen(long long n)
+{
+	long long		cnt;
 
-int		sort_by_mtime_from_little(char *s1, char *s2);
-void	sort_by_what(char **current_dir_file, t_op *flag, int alloc_size);
-
-#endif
+	cnt = 0;
+	if (n <= 0)
+	{
+		n *= -1;
+		cnt++;
+	}
+	while (n > 0)
+	{
+		cnt++;
+		n /= 10;
+	}
+	return (cnt);
+}

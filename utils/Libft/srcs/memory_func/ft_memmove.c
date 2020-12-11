@@ -1,21 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_bonus.h                                       :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/02 17:46:33 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/12 01:26:33 by tjinichi         ###   ########.fr       */
+/*   Created: 2020/06/22 17:59:49 by tjinichi          #+#    #+#             */
+/*   Updated: 2020/12/11 21:28:54 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SORT_BONUS_H
-# define SORT_BONUS_H
+#include "../../includes/memory_func.h"
 
-# include "option_flag_bonus.h"
+void	*ft_memmove(void *dst, const void *src, size_t len)
+{
+	unsigned char	*dst_p;
+	unsigned char	*src_p;
 
-int		sort_by_mtime_from_little(char *s1, char *s2);
-void	sort_by_what(char **current_dir_file, t_op *flag, int alloc_size);
-
-#endif
+	if (!dst && !src)
+		return (NULL);
+	dst_p = (unsigned char*)dst;
+	src_p = (unsigned char*)src;
+	if (src_p < dst_p)
+	{
+		while (len > 0)
+		{
+			dst_p[len - 1] = src_p[len - 1];
+			len--;
+		}
+	}
+	else
+	{
+		ft_memcpy(dst_p, src_p, len);
+	}
+	return (dst);
+}

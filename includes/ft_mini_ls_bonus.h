@@ -6,7 +6,7 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 02:44:28 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/08 17:04:33 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/12 01:26:24 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # include "sort_bonus.h"
 # include "option_flag_bonus.h"
 # include "color.h"
-# include "../utils/Libft/srcs/libft.h"
+# include "../utils/Libft/includes/libft.h"
 
 int				mini_ls(void);
 int				mini_ls_option(char **arg);

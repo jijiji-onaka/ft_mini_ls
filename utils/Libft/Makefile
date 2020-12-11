@@ -6,96 +6,155 @@
 #    By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/23 20:15:31 by tjinichi          #+#    #+#              #
-#    Updated: 2020/12/08 17:32:46 by tjinichi         ###   ########.fr        #
+#    Updated: 2020/12/12 00:36:51 by tjinichi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
+# =========== compile option ===================================================
 CC = gcc
-
 CFLAGS = -Wall -Wextra -Werror
-
 RM = rm
+# =========== path =============================================================
+INCLUDES = $(wildcard ./includes/*.h)
+SRCDIR = ./srcs
+OBJDIR = $(SRCDIR)/objs
+# ========= convert function ===================================================
+CONVERT_DIR = $(SRCDIR)/convert_func
+CONVERT_SRCS = $(addprefix $(CONVERT_DIR)/, \
+				ft_atoi.c \
+				ft_itoa.c \
+				ft_tolower.c \
+				ft_toupper.c \
+				ft_stod.c \
+				ft_stoi.c \
+				ft_stov.c \
+)
+#========== count function =====================================================
+COUNT_DIR = $(SRCDIR)/count_func
+COUNT_SRCS = $(addprefix $(COUNT_DIR)/, \
+				count_2d.c \
+				ft_numlen.c \
+				ft_strlen.c \
+)
+#========== file function ======================================================
+FILE_DIR = $(SRCDIR)/file_func
+FILE_SRCS = $(addprefix $(FILE_DIR)/, \
+				create_file_name.c \
+				get_next_line.c \
+				get_next_line_utils.c \
+)
+#========== free function ======================================================
+FREE_DIR = $(SRCDIR)/free_func
+FREE_SRCS = $(addprefix $(FREE_DIR)/, \
+				ptr_2d_free.c \
+				ptr_free.c \
+)
+#========== is_what function ===================================================
+ISWHAT_DIR = $(SRCDIR)/iswhat_func
+ISWHAT_SRCS = $(addprefix $(ISWHAT_DIR)/, \
+				ft_isalnum.c \
+				ft_isalpha.c \
+				ft_isascii.c \
+				ft_isdigit.c \
+				ft_isprint.c \
+				ft_isspace.c \
+)
+#========== lst function =======================================================
+LST_DIR = $(SRCDIR)/lst_func
+LST_SRCS = $(addprefix $(LST_DIR)/, \
+				ft_lstadd_back.c \
+				ft_lstadd_front.c \
+				ft_lstclear.c \
+				ft_lstdelone.c \
+				ft_lstiter.c \
+				ft_lstlast.c \
+				ft_lstmap.c \
+				ft_lstnew.c \
+				ft_lstsize.c \
+)
+#========== memory function ====================================================
+MEMORY_DIR = $(SRCDIR)/memory_func
+MEMORY_SRCS = $(addprefix $(MEMORY_DIR)/, \
+				ft_bzero.c \
+				ft_calloc.c \
+				ft_memccpy.c \
+				ft_memchr.c \
+				ft_memcmp.c \
+				ft_memcpy.c \
+				ft_memmove.c \
+				ft_memset.c \
+)
+#========== sort function ======================================================
+SORT_DIR = $(SRCDIR)/sort_func
+SORT_SRCS = $(addprefix $(SORT_DIR)/, \
+				ft_swap.c \
+				marge_strsort.c \
+)
+#========== string function ====================================================
+STRING_DIR = $(SRCDIR)/string_func
+STRING_SRCS = $(addprefix $(STRING_DIR)/, \
+				check_strtail_num.c \
+				ft_split.c \
+				ft_str3join.c \
+				ft_strchr.c \
+				ft_strcmp.c \
+				ft_strdup.c \
+				ft_strjoin.c \
+				ft_strjoinch.c \
+				ft_strlcat.c \
+				ft_strlcpy.c \
+				ft_strmapi.c \
+				ft_strncmp.c \
+				ft_strnstr.c \
+				ft_strrchr.c \
+				ft_strtrim.c \
+				ft_substr.c \
+				strjoin_num.c \
+				strtail_number.c \
+)
+#========== 3Dvecter function ==================================================
+VEC3D_DIR = $(SRCDIR)/vec3d_func
+VEC3D_SRCS = $(addprefix $(VEC3D_DIR)/, \
+				add_vec.c \
+				crossproduct.c \
+				distance_vec.c \
+				dotproduct.c \
+				intersect_point.c \
+				length_vec.c \
+				new_vec.c \
+				normalize_vec.c \
+				scal_times_vec.c \
+				substruct_vec.c \
+				cos_vec.c \
+				scal_sub_vec.c \
+)
+#========== write function ====================================================
+WRITE_DIR = $(SRCDIR)/write_func
+WRITE_SRCS = $(addprefix $(WRITE_DIR)/, \
+				ft_putchar_fd.c \
+				ft_putstr_fd.c \
+				ft_putnbr_fd.c \
+				ft_putendl_fd.c \
+)
+#========== Srcs and Objs ======================================================
+SRCS = \
+	$(CONVERT_SRCS)	\
+	$(COUNT_SRCS)	\
+	$(FILE_SRCS)	\
+	$(FREE_SRCS)	\
+	$(ISWHAT_SRCS)	\
+	$(LST_SRCS)		\
+	$(MEMMORY_SRCS)	\
+	$(SORT_SRCS)	\
+	$(STRING_SRCS)	\
+	$(VEC3D_SRCS)	\
+	$(WRITE_SRCS)	\
 
-SRCFILE =	ft_atoi.c \
-		ft_bzero.c \
-		ft_calloc.c \
-		ft_isalnum.c \
-		ft_isalpha.c \
-		ft_isascii.c \
-		ft_isdigit.c \
-		ft_isprint.c \
-		ft_itoa.c \
-		ft_memccpy.c \
-		ft_memchr.c \
-		ft_memcmp.c \
-		ft_memcpy.c \
-		ft_memmove.c \
-		ft_memset.c \
-		ft_putchar_fd.c \
-		ft_putendl_fd.c \
-		ft_putnbr_fd.c \
-		ft_putstr_fd.c \
-		ft_split.c \
-		ft_strchr.c \
-		ft_strdup.c \
-		ft_strjoin.c \
-		ft_strjoinch.c \
-		ft_strlcat.c \
-		ft_strlcpy.c \
-		ft_strlen.c \
-		ft_strmapi.c \
-		ft_strncmp.c \
-		ft_strnstr.c \
-		ft_strrchr.c \
-		ft_strtrim.c \
-		ft_substr.c \
-		ft_tolower.c \
-		ft_toupper.c \
-		ft_isspace.c \
-		ft_stoi.c \
-		ft_stod.c \
-		get_next_line.c \
-		get_next_line_utils.c \
-		ft_check_file_tail.c \
-		count_2d.c \
-		array_free_2d.c \
-		ft_numlen.c \
-		create_file_name.c \
-		ft_stov.c \
-		ft_strcmp.c \
-		joint_number.c \
-		file_tail_number.c \
-		ft_swap.c \
-		ft_strsort.c \
-		ft_two_2d_ptr_free.c \
-		ft_ptr_free.c \
-		ft_str3join.c \
-		ft_lstadd_back.c \
-		ft_lstadd_front.c \
-		ft_lstclear.c \
-		ft_lstiter.c \
-		ft_lstlast.c \
-		ft_lstnew.c \
-		ft_lstsize.c \
-		ft_lstdelone.c \
-		ft_lstmap.c \
+OBJS = $(addprefix $(OBJDIR)/, $(notdir $(SRCS:.c=.o)))
 
-SRCDIR = ./srcs/
-
-SRCS = $(addprefix $(SRCDIR), $(SRCFILE))
-
-SRC_TMP	= $(notdir $(SRCS))
-
-
-OBJ_TMP = $(SRC_TMP:.c=.o)
-
-OBJDIR = $(SRCDIR)objs/
-
-OBJS	= $(addprefix $(OBJDIR), $(OBJ_TMP))
-
-# ============================ COLOR =========================
+# =========== COLOR ============================================================
 RESET		= \033[0m
 RED			= \033[0;31m
 GREEN		= \033[0;32m
@@ -109,10 +168,7 @@ B_YELLOW	= \033[0;43m
 B_CYAAN		= \033[0;46m
 BOLD		= \033[1m
 UNDER_LINE	= \033[0;4m
-
-# ============================================================
-
-# ============================ Increment % ===================
+# ========== Increment % =======================================================
 
 T		=	$(words ${OBJS})
 N		=	0
@@ -121,30 +177,57 @@ N		=	0
 C		=	$(words $N)${eval N += 1}
 ECHO	=	"[`expr $C  '*' 100 / $T`%]"
 
-# ============================================================
-
-$(OBJDIR)%.o : $(SRCDIR)%.c
+# ========== Make objs =========================================================
+$(OBJDIR)/%.o : $(CONVERT_DIR)/%.c
 	@mkdir -p $(OBJDIR)
+	@$(CC) $(CFLAGS) -c -o $@ $<
+	@printf " %-100b\r" "$(YELLOW)$(ECHO) Compiling  $(RESET)$(UNDER_LINE)"$@"$(RESET)"
+$(OBJDIR)/%.o : $(COUNT_DIR)/%.c
+	@$(CC) $(CFLAGS) -c -o $@ $<
+	@printf " %-100b\r" "$(YELLOW)$(ECHO) Compiling  $(RESET)$(UNDER_LINE)"$@"$(RESET)"
+$(OBJDIR)/%.o : $(FILE_DIR)/%.c
+	@$(CC) $(CFLAGS) -c -o $@ $<
+	@printf " %-100b\r" "$(YELLOW)$(ECHO) Compiling  $(RESET)$(UNDER_LINE)"$@"$(RESET)"
+$(OBJDIR)/%.o : $(FREE_DIR)/%.c
+	@$(CC) $(CFLAGS) -c -o $@ $<
+	@printf " %-100b\r" "$(YELLOW)$(ECHO) Compiling  $(RESET)$(UNDER_LINE)"$@"$(RESET)"
+$(OBJDIR)/%.o : $(ISWHAT_DIR)/%.c
+	@$(CC) $(CFLAGS) -c -o $@ $<
+	@printf " %-100b\r" "$(YELLOW)$(ECHO) Compiling  $(RESET)$(UNDER_LINE)"$@"$(RESET)"
+$(OBJDIR)/%.o : $(LST_DIR)/%.c
+	@$(CC) $(CFLAGS) -c -o $@ $<
+	@printf " %-100b\r" "$(YELLOW)$(ECHO) Compiling  $(RESET)$(UNDER_LINE)"$@"$(RESET)"
+$(OBJDIR)/%.o : $(MEMORY_DIR)/%.c
+	@$(CC) $(CFLAGS) -c -o $@ $<
+	@printf " %-100b\r" "$(YELLOW)$(ECHO) Compiling  $(RESET)$(UNDER_LINE)"$@"$(RESET)"
+$(OBJDIR)/%.o : $(SORT_DIR)/%.c
+	@$(CC) $(CFLAGS) -c -o $@ $<
+	@printf " %-100b\r" "$(YELLOW)$(ECHO) Compiling  $(RESET)$(UNDER_LINE)"$@"$(RESET)"
+$(OBJDIR)/%.o : $(STRING_DIR)/%.c
+	@$(CC) $(CFLAGS) -c -o $@ $<
+	@printf " %-100b\r" "$(YELLOW)$(ECHO) Compiling  $(RESET)$(UNDER_LINE)"$@"$(RESET)"
+$(OBJDIR)/%.o : $(VEC3D_DIR)/%.c
+	@$(CC) $(CFLAGS) -c -o $@ $<
+	@printf " %-100b\r" "$(YELLOW)$(ECHO) Compiling  $(RESET)$(UNDER_LINE)"$@"$(RESET)"
+$(OBJDIR)/%.o : $(WRITE_DIR)/%.c
 	@$(CC) $(CFLAGS) -c -o $@ $<
 	@printf " %-100b\r" "$(YELLOW)$(ECHO) Compiling  $(RESET)$(UNDER_LINE)"$@"$(RESET)"
 
 
+# ========== Main Make =========================================================
 $(NAME): $(OBJS)
-	@make -C ./srcs/libvec3D
-	@cp ./srcs/libvec3D/libvec.a $(NAME)
 	@ar rcs $(NAME) $(OBJS)
 	@printf "\r                                                             \r$(GREEN)$(BOLD)created libft.a$(RESET)\n"
 
 all:	$(NAME)
 
 clean:
-	@make clean -C ./srcs/libvec3D
+	@make clean -C ./srcs/vec3d_func
 	@$(RM) -rf $(OBJDIR)
 
 fclean: clean
-	@make fclean -C ./srcs/libvec3D
+	@make fclean -C ./srcs/vec3d_func
 	@$(RM) -f $(NAME)
-
 
 re:	fclean all
 

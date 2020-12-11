@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_bonus.h                                       :+:      :+:    :+:   */
+/*   convert_func.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/02 17:46:33 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/12 01:26:33 by tjinichi         ###   ########.fr       */
+/*   Created: 2020/12/10 20:46:17 by tjinichi          #+#    #+#             */
+/*   Updated: 2020/12/11 23:41:21 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SORT_BONUS_H
-# define SORT_BONUS_H
+#ifndef CONVERT_FUNC_H
+# define CONVERT_FUNC_H
 
-# include "option_flag_bonus.h"
+# include "libft.h"
 
-int		sort_by_mtime_from_little(char *s1, char *s2);
-void	sort_by_what(char **current_dir_file, t_op *flag, int alloc_size);
+int			ft_atoi(const char *str);
+char		*ft_itoa(int n);
+int			ft_stod(char *str, double *d);
+int			ft_stoi(char *str, int *i);
+int			ft_stov(char *s, t_p3 *p);
+int			ft_tolower(int c);
+int			ft_toupper(int c);
 
 #endif

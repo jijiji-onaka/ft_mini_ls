@@ -6,7 +6,7 @@
 /*   By: tjinichi <tjinichi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 04:04:52 by tjinichi          #+#    #+#             */
-/*   Updated: 2020/12/06 22:20:01 by tjinichi         ###   ########.fr       */
+/*   Updated: 2020/12/12 01:27:38 by tjinichi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,14 +89,18 @@ int		sort_by_filesize_from_little(char *s1, char *s2)
 		return (-ft_strcmp(s1, s2));
 }
 
-void	sort_by_what(char **current_dir_file, t_op *flag)
+void	sort_by_what(char **current_dir_file, t_op *flag, int alloc_size)
 {
 	if (flag->large_s)
-		ft_strsort(current_dir_file, &sort_by_filesize_from_little);
+		marge_strsort(current_dir_file, 0, alloc_size - 2, \
+			&sort_by_mtime_from_little);
 	else if (flag->large_u)
-		ft_strsort(current_dir_file, &sort_by_createtime_from_little);
+		marge_strsort(current_dir_file, 0, alloc_size - 2, \
+			&sort_by_createtime_from_little);
 	else if (flag->small_u)
-		ft_strsort(current_dir_file, &sort_by_atime_from_little);
+		marge_strsort(current_dir_file, 0, alloc_size - 2, \
+			&sort_by_atime_from_little);
 	else
-		ft_strsort(current_dir_file, &sort_by_mtime_from_little);
+		marge_strsort(current_dir_file, 0, alloc_size - 2, \
+			&sort_by_mtime_from_little);
 }
